@@ -1617,16 +1617,23 @@ const LOCATIONS = {
     district: "old-core",
     tag: "Religious", tagClass: "tag-religious",
     svgX: 700, svgY: 420,
-    desc: "A mechanical wonder dedicated to the Sovereign Host — specifically Onatar, god of craft and fire. Enormous gears turn within its walls for reasons no one alive fully understands. A city landmark visible from most of Marketplace.",
+    desc: "A symphony of gears and hymns greets you as you approach. The cathedral's towering spires are sheathed in polished brass, etched with celestial patterns that shift like constellations as sunlight glides across them. At its peak, a colossal clockwork sun and moon orbit one another, synchronized to the hour. The entrance is framed by a gargantuan archway of interlocking gears inscribed with prayers to the Sovereign Host -- as they turn, each gear briefly forms the symbol of a different deity before dissolving into the next.",
     details: [
-      {l:"High Priestess", v:"Selene d'Cannith — born into House Cannith, carries a Siberys dragonmark. Has distanced herself from the house and dedicated herself to the faith."},
-      {l:"Notable", v:"Cogsworth (broken Warforged, gave the party a coded gear). Lila ir'Ventre (age 12) helps 'repair' the gears."},
+      {l:"The Nave", v:"Vaulted ceiling of glowing gold filaments and rotating gears casting kaleidoscopic light onto marble floors. Pews carved from darkwood, inlaid with silver clockwork motifs."},
+      {l:"Celestial Orrery", v:"A massive brass model of the planes at the center of the nave, powered by a thousand whirring cogs. Elemental sparks orbit it -- fire for Fernia, ice for Risia, lightning for Syrania."},
+      {l:"Stained Glass", v:"Depicts the Sovereign Host in vibrant hues -- and the scenes move. Dol Dorn battles a hydra whose heads regrow endlessly; Olladra dances while her dice tumble in midair."},
+      {l:"Clockwork Acolytes", v:"House Cannith warforged with porcelain faces. Light candles with flame-tipped fingers, adjust gears with precision, chant hymns in harmonized metallic voices."},
+      {l:"Harmonic Pulpit", v:"A raised platform where priests' voices are amplified by tiny gears into resonant, almost musical tones that reverberate through the cathedral, syncing with the ticking of the clocks."},
+      {l:"Eternal Flame", v:"A forge-like brazier at the altar sustained by pulleys and bellows. Flames shift color -- blue, gold, crimson -- by time of day. Worshippers leave offerings of tools or weapons to be blessed by the gears' touch."},
+      {l:"Celestial Chimes", v:"12 bronze bells in the tallest spire, struck by timed gears -- never by hand. Each hour plays a hymn to a different Sovereign. Dol Arrah's mournful tones at dawn; Balinor's hunting call at noon."},
+      {l:"Chamber of Cogs", v:"Visible through glass panels in the floor: a hidden basement where enormous central gears -- each the size of a wagon -- power the cathedral's mechanisms. Cannith engineers in grease-stained robes work below, shouting over the deafening clank-clank-CLANK."},
     ],
     gmDetails: [
       {l:"Status", v:"All church NPCs clean. No cult affiliations. Likely a key Chapter 4 location."},
+      {l:"Chamber access", v:"Players have seen it through the floor panels but have no access yet. What's actually down there beyond the machinery is TBD for Chapter 4."},
     ],
-    gm: "SILAS is here — gaunt scarred half-elf lighting candles at Onatar's forge daily. Shadow lags behind his movements. Repentant ex-Below cultist with firsthand knowledge of BOTH cults. Recognises Siberys cult symbols in the cathedral gears. THE PARTY HAS COMPLETELY IGNORED HIM. He is a walking Rosetta Stone.",
-    characters: ["selene", "silas"],
+    gm: "SILAS is here -- gaunt scarred half-elf lighting candles at Onatar's forge daily. Shadow lags behind his movements. Repentant ex-Below cultist with firsthand knowledge of BOTH cults. Recognizes Siberys cult symbols in the cathedral gears. THE PARTY HAS COMPLETELY IGNORED HIM. He is a walking Rosetta Stone. Brother Corin secretly reprogrammed a clockwork acolyte to cheat at dice -- his miraculous luck is now a minor cult following among gamblers.",
+    characters: ["selene", "silas", "corin"],
     hooks: [],
   },
   4: {
@@ -1703,6 +1710,874 @@ const LOCATIONS = {
   },
 };
 
+
+const HIGHMARKET_LOCATIONS = [
+  {
+    id: 'hm-1',
+    name: "The Twilight Tavern",
+    svgX: 140, svgY: 220,
+    tag: "Royal Eyes", tagClass: "tag-infrastructure",
+    image: "https://assets.forge-vtt.com/5fca6d4f8fe4585045207db9/modules/czepeku-274-twisted-tavern/Maps/GL_TwistedTavern_Original_Day.jpg",
+    desc: "From the outside, the Twilight Tavern is the kind of place that earns its name -- dark wood, narrow windows, a sign with a painted eye that seems to follow you as you pass. The sort of establishment that draws curious visitors once and either hooks them completely or sends them somewhere better lit. Both outcomes are, from the management's perspective, entirely acceptable. Inside, the main bar is dominated by the eye mosaic at its center -- a massive stylized eye in teal and gold set into the floor, surrounded by pale stone in a crescent shape with what the regulars have taken to calling 'the flames.' It is dramatic. It is deliberate. People assume it is decoration. They are not entirely wrong. The Twilight Tavern has genuine regulars who come for the atmosphere, the excellent food from Boldar's kitchen, and the comfortable feeling of being somewhere that does not particularly care what you get up to as long as you settle your tab. Many of them have no idea what else the establishment is. This is, professionally speaking, ideal.",
+    details: [
+      {l:"Ground floor", v:"Main bar with the eye mosaic floor. Round tables, a curved bar in the corner, stairs to the cellar. Dim lighting, purple tones, deliberately atmospheric."},
+      {l:"Boldar's kitchen", v:"Middle floor. Large hearth, prep areas, storage. The food is genuinely excellent and draws repeat customers regardless of any other consideration."},
+      {l:"Upper floor", v:"Private rooms. One notably well-appointed suite -- Nio's quarters or for significant guests. Others more spartan. One room always locked."},
+      {l:"The regulars", v:"A genuine, loyal clientele. Some drawn in by the atmosphere and never left. Some conducting business they prefer to conduct quietly. Some having entirely ordinary conversations with the bar staff that are, technically, not ordinary at all."},
+    ],
+    gmDetails: [
+      {l:"True function", v:"Royal Eyes safe house and active cell. Nio Khan's retirement project. Operatives Boldar and Lia ir'Lamar run day-to-day operations and intelligence gathering."},
+      {l:"The locked room", v:"Upper floor. Contains equipment and materials not consistent with a legitimate tavern. The party has not been shown this yet."},
+      {l:"Information flow", v:"Lia's bar conversations capture a constant stream of Highmarket Reach intelligence. Boldar's smuggler contacts extend that reach across the city. Everything filters to Nio."},
+    ],
+    gm: "The Twilight Tavern is the party's home base and best intelligence resource in Marketplace. The eye on the floor is a Royal Eyes in-joke hiding in plain sight -- players who know what the Royal Eyes are and look at it will get it. The locked upper room is available as a plot device when needed.",
+    characters: ["nio", "boldar", "lia"],
+  },
+  {
+    id: 'hm-2',
+    name: "The Gilded Menagerie",
+    svgX: 680, svgY: 350,
+    tag: "House Vadalis", tagClass: "tag-industrial",
+    desc: "A facade of white marble and gold-leafed arches marks this establishment, its doors flanked by twin statues of prowling manticores with gemstone eyes. A polished brass plaque reads: 'House Vadalis Presents: Companions Fit for Royalty.' Beneath it, in smaller script: 'Every creature a masterpiece. Every masterpiece... attainable.' Inside, the Menagerie resembles a grand conservatory, with sunlight filtering through stained-glass domes. Creatures lounge in enchanted habitats -- no cages, only shimmering force fields and artful landscapes. A prismatic songbird flits between floating perches, trailing rainbows. A moonlit panther naps atop a marble plinth, its fur glimmering like stardust. The air hums with containment magic, faint as a lullaby. Sandalwood incense, fresh-cut orchids, and the crisp scent of ozone. The Gilded Menagerie is equal parts art gallery and auction house for living things. Yet beneath the beauty lies a whisper of disquiet -- the way the crystal-winged sprite's smile doesn't reach its eyes, or the soulbright fox's tail flicking as if counting seconds to escape. For all its grandeur, the Menagerie feels like a gilded cage. One where the clients, not the creatures, are truly on display.",
+    details: [
+      {l:"House", v:"House Vadalis -- dragonmarked house of handling, breeding, and training."},
+      {l:"Stock", v:"Exotic companions and creatures of exceptional quality. Every animal is flawless, serene, and unnervingly docile."},
+      {l:"Atmosphere", v:"Curated wonder. Gentle harp music, soft animal sounds, ozone and orchids. An art gallery where the art is alive."},
+      {l:"Clientele", v:"Wealthy merchants, visiting nobles, anyone who wants something rare and is willing to pay for it."},
+    ],
+    gmDetails: [
+      {l:"The watching", v:"House Vadalis tracks who buys what, who comes back, who asks about certain specific creatures. The Menagerie is as much an intelligence operation as a commercial one."},
+      {l:"The Vadalis link", v:"A smuggling ring importing creatures for cult experiments runs through contacts connected to the Menagerie. How much the staff know is unclear. Thread not fully pursued by party."},
+    ],
+    gm: "The party has visited. They know the surface. The creature smuggling thread connecting Vadalis contacts to the Alchemical Quarter is available as a plot development when useful. The disquiet the place produces is intentional -- lean into it.",
+    characters: ['corvyn', 'aven_vadalis', 'sela_vadalis', 'tomas'],
+  },
+  {
+    id: 'hm-3',
+    name: "House Kundarak Enclave",
+    svgX: 720, svgY: 540,
+    tag: "House Kundarak", tagClass: "tag-industrial",
+    desc: "The Kundarak enclave is the only building in Highmarket Reach that looks like it was built for a different city entirely. Everything around it aspires -- new stone, bright paint, the architectural optimism of money that arrived recently and wants everyone to know. The Kundarak building simply is. Iron-banded doors. Narrow windows with interior shutters. Stone that was not quarried locally and was not intended to blend in. The message is not subtle: this building was built to last, and whatever is inside it will still be inside it when everything around it has been rebuilt twice. House Kundarak offers banking, secure storage, and the kind of financial discretion that certain clients require and are willing to pay handsomely for. The staff are unfailingly polite. They are also, without exception, carrying more weapons than their clothing would suggest.",
+    details: [
+      {l:"House", v:"House Kundarak -- dragonmarked house of warding, banking, and secure storage."},
+      {l:"Services", v:"Banking, vault storage, letters of credit, financial transfers. Discretion guaranteed."},
+      {l:"Staff", v:"Unfailingly polite. Do not cause trouble here."},
+      {l:"Architecture", v:"Built to a different standard than the surrounding district. This is intentional."},
+    ],
+    gmDetails: [
+      {l:"Intelligence value", v:"Kundarak knows who has money, where it moves, and who has been making unusual withdrawals or deposits. They will not share this. They can theoretically be persuaded with sufficient leverage or authority."},
+    ],
+    gm: "The Kundarak enclave is background for now but available as a resource if the party needs financial information or secure storage. The 'sufficient leverage' for information is deliberately vague -- calibrate to what the party can actually produce.",
+    characters: ['aldric', 'vera', 'jorik'],
+  },
+  {
+    id: 'hm-4',
+    name: "Gold Dragon Inn",
+    svgX: 490, svgY: 200,
+    tag: "House Ghallanda", tagClass: "tag-commerce",
+    desc: "Locals call it the Golden Dragon, which is not quite its name, but close enough that nobody corrects anyone anymore. It sits on the main trade road through Highmarket Reach -- a proper Gold Dragon Inn franchise location, large enough to have earned its place on the road. Forty-odd rooms, a restaurant that serves the same reliable menu you would get at any Gold Dragon Inn from here to Sharn, a stage in the common room where House Phiarlan and Thuranni entertainers perform most evenings. The Ghallanda seal above the door means what it always means: fixed prices, no surprises, magically secured strongboxes for your valuables. In a city growing as fast as Marketplace, full of new establishments of uncertain quality and uncertain loyalties, that seal carries real weight. The Golden Dragon does not try to be interesting. It tries to be exactly what it is, every single day, and succeeds.",
+    details: [
+      {l:"Type", v:"Gold Dragon Inn -- House Ghallanda franchise. One of the larger road locations, ~40 rooms."},
+      {l:"Location", v:"Main trade road, Highmarket Reach. High foot traffic, steady clientele of traveling merchants and dignitaries."},
+      {l:"The guarantee", v:"Fixed prices. Standard menu. Magically secure strongboxes. You will not be poisoned, robbed, or significantly disappointed."},
+      {l:"Entertainment", v:"House Phiarlan and Thuranni guild-licensed entertainers perform in the common room most evenings. Musicians, storytellers, the occasional illusionist."},
+      {l:"Nickname", v:"'The Golden Dragon' -- locals dropped the Inn. Nobody corrects them."},
+    ],
+    gmDetails: [
+      {l:"The entertainers", v:"Phiarlan and Thuranni performers working out of a Gold Dragon Inn are rarely just entertainers. Both houses have intelligence operations. Who is performing here and what they are actually doing is a thread available when useful."},
+      {l:"Intelligence value", v:"Travelers talk to staff, staff remember everything. Different information stream from the Twilight Tavern -- more regional and road-based, less local. If the party needs to know what is moving on the roads between Marketplace and Fairhaven, this is where to ask."},
+    ],
+    gm: "Background for now but with real potential. The Phiarlan/Thuranni angle is the most interesting thread -- one or both houses almost certainly have an operative in the entertainment roster, and they have been watching Marketplace's boom as closely as anyone. The strongboxes are magically secured, which means someone with the right skills or connections might want access to what certain clients are storing.",
+    characters: ['mira', 'pip_ghallanda', 'serath', 'kessa', 'dunwick'],
+  },
+];
+
+
+// District map SVGs
+const DISTRICT_MAPS = {
+  'highmarket': `<svg viewBox="0 0 1000 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="hm-drop" x="-10%" y="-10%" width="130%" height="130%">
+      <feOffset in="SourceAlpha" dx="0.8" dy="1.6"/>
+      <feGaussianBlur stdDeviation="0.8"/>
+      <feColorMatrix values="0 0 0 0 0.22  0 0 0 0 0.13  0 0 0 0 0.07  0 0 0 0.5 0"/>
+      <feComposite in2="SourceGraphic" operator="out" result="s"/>
+      <feMerge><feMergeNode in="s"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="hm-grain" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+      <rect width="60" height="60" fill="transparent"/>
+      <circle cx="7" cy="9" r="0.5" fill="#5a3a23" opacity="0.3"/>
+      <circle cx="22" cy="3" r="0.5" fill="#5a3a23" opacity="0.25"/>
+      <circle cx="33" cy="18" r="0.5" fill="#5a3a23" opacity="0.3"/>
+      <circle cx="44" cy="34" r="0.5" fill="#5a3a23" opacity="0.25"/>
+      <circle cx="28" cy="44" r="0.5" fill="#5a3a23" opacity="0.3"/>
+      <circle cx="8" cy="51" r="0.5" fill="#5a3a23" opacity="0.25"/>
+    </pattern>
+    <pattern id="hm-grass" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <rect width="40" height="40" fill="#bca878"/>
+      <g stroke="#7a8a52" stroke-width="0.6" stroke-linecap="round" fill="none">
+        <path d="M6 28 q1 -4 0 -8"/><path d="M18 14 q1 -4 0 -8"/>
+        <path d="M30 30 q1 -4 0 -8"/><path d="M34 8 q1 -3 0 -6"/>
+      </g>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="900" fill="url(#hm-grass)"/>
+
+  <!-- District ground -- irregular organic shape, newer but sprawling -->
+  <path d="M 80 120 Q 200 60 420 50 Q 620 42 760 80 Q 880 120 920 260 Q 950 380 920 520 Q 890 660 800 750 Q 700 830 540 850 Q 380 865 240 820 Q 120 775 70 650 Q 30 530 40 380 Q 50 240 80 120 Z"
+    fill="#d4b870" stroke="#7a4a28" stroke-width="2.5"/>
+  <path d="M 80 120 Q 200 60 420 50 Q 620 42 760 80 Q 880 120 920 260 Q 950 380 920 520 Q 890 660 800 750 Q 700 830 540 850 Q 380 865 240 820 Q 120 775 70 650 Q 30 530 40 380 Q 50 240 80 120 Z"
+    fill="url(#hm-grain)" opacity="0.5"/>
+
+  <!-- Newer money sub-areas -- wider, more planned feel than Old Core -->
+  <!-- West side -- older, denser buildings along old road -->
+  <path d="M 80 200 Q 160 160 280 180 Q 340 220 320 380 Q 300 500 240 560 Q 160 580 100 520 Q 50 440 60 320 Q 68 250 80 200 Z"
+    fill="#c8a050" opacity="0.4"/>
+  <!-- East side -- newer construction, dragonmark houses -->
+  <path d="M 700 100 Q 820 120 880 220 Q 910 320 880 440 Q 840 540 740 580 Q 660 590 620 520 Q 590 440 620 340 Q 650 220 700 100 Z"
+    fill="#d4b060" opacity="0.35"/>
+  <!-- Central spine along trade road -- most active -->
+  <path d="M 380 60 Q 480 55 560 80 Q 600 160 580 360 Q 560 520 500 660 Q 460 740 400 760 Q 350 760 320 680 Q 300 580 340 400 Q 370 220 380 60 Z"
+    fill="#caa458" opacity="0.4"/>
+  <!-- South -- still filling in, looser construction -->
+  <path d="M 200 640 Q 360 680 500 700 Q 640 700 740 660 Q 780 750 700 800 Q 560 840 380 840 Q 240 820 160 750 Q 120 700 160 660 Q 180 642 200 640 Z"
+    fill="#b89040" opacity="0.3"/>
+
+  <!-- TRADE ROAD -- main spine north-south -->
+  <path d="M 490 30 L 490 870" stroke="#a64a30" stroke-width="11" fill="none" stroke-linecap="round"/>
+  <!-- East-west cross streets -->
+  <path d="M 80 300 Q 290 280 490 290 Q 680 300 900 320" stroke="#a64a30" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <path d="M 80 520 Q 280 500 490 510 Q 690 520 880 540" stroke="#a64a30" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <!-- Secondary roads -->
+  <g stroke="#b86a48" stroke-width="5" fill="none" stroke-linecap="round">
+    <path d="M 490 290 Q 360 320 280 380 Q 220 440 200 540"/>
+    <path d="M 490 290 Q 620 310 700 380 Q 760 440 780 540"/>
+    <path d="M 200 300 Q 340 300 490 290"/>
+    <path d="M 490 510 Q 360 530 280 580 Q 220 630 200 700"/>
+    <path d="M 490 510 Q 620 530 700 580 Q 760 630 780 700"/>
+    <path d="M 280 380 Q 340 430 380 510"/>
+    <path d="M 700 380 Q 640 430 610 510"/>
+  </g>
+  <!-- Inner street grid - wider blocks than Old Core -->
+  <g stroke="#c07848" stroke-width="3.5" fill="none" stroke-linecap="round">
+    <!-- West blocks -->
+    <path d="M 120 200 L 280 200"/><path d="M 100 260 L 270 260"/>
+    <path d="M 90 350 L 260 350"/><path d="M 85 420 L 250 420"/>
+    <path d="M 90 460 L 255 460"/><path d="M 100 500 L 270 500"/>
+    <path d="M 130 200 L 120 500"/><path d="M 190 200 L 185 500"/>
+    <path d="M 250 190 L 248 510"/>
+    <!-- East blocks -->
+    <path d="M 720 160 L 880 180"/><path d="M 710 220 L 870 240"/>
+    <path d="M 700 300 L 860 310"/><path d="M 700 380 L 860 390"/>
+    <path d="M 700 460 L 860 470"/><path d="M 710 540 L 870 550"/>
+    <path d="M 730 160 L 720 540"/><path d="M 790 160 L 785 545"/>
+    <path d="M 850 170 L 848 548"/>
+    <!-- Central blocks around trade road -->
+    <path d="M 300 120 L 300 280"/><path d="M 360 100 L 356 280"/>
+    <path d="M 420 80 L 418 280"/><path d="M 560 80 L 562 280"/>
+    <path d="M 620 100 L 622 280"/><path d="M 680 120 L 682 280"/>
+    <path d="M 300 520 L 298 700"/><path d="M 360 530 L 358 710"/>
+    <path d="M 420 540 L 418 740"/><path d="M 560 540 L 562 740"/>
+    <path d="M 620 530 L 622 720"/><path d="M 680 520 L 682 700"/>
+  </g>
+
+  <!-- BUILDINGS - wider spaced, newer feel -->
+  <!-- West residential/commercial -->
+  <g fill="#d0a060" stroke="#8a6030" stroke-width="0.9" opacity="0.85">
+    <rect x="110" y="170" width="22" height="16"/><rect x="136" y="168" width="18" height="18"/>
+    <rect x="158" y="170" width="22" height="16"/><rect x="184" y="168" width="18" height="18"/>
+    <rect x="210" y="170" width="22" height="16"/><rect x="236" y="168" width="20" height="16"/>
+    <rect x="108" y="220" width="22" height="16"/><rect x="134" y="218" width="20" height="18"/>
+    <rect x="158" y="220" width="22" height="16"/><rect x="184" y="218" width="20" height="18"/>
+    <rect x="210" y="220" width="22" height="16"/><rect x="236" y="218" width="20" height="16"/>
+    <rect x="100" y="360" width="22" height="16"/><rect x="126" y="358" width="20" height="18"/>
+    <rect x="150" y="360" width="22" height="16"/><rect x="176" y="358" width="20" height="18"/>
+    <rect x="200" y="360" width="22" height="16"/><rect x="226" y="358" width="20" height="16"/>
+    <rect x="96" y="428" width="22" height="16"/><rect x="122" y="426" width="20" height="18"/>
+    <rect x="146" y="428" width="22" height="16"/><rect x="172" y="426" width="20" height="18"/>
+    <rect x="196" y="428" width="22" height="16"/><rect x="222" y="426" width="20" height="16"/>
+    <rect x="100" y="468" width="22" height="16"/><rect x="126" y="466" width="20" height="18"/>
+    <rect x="150" y="468" width="22" height="16"/><rect x="176" y="466" width="20" height="18"/>
+    <rect x="108" y="508" width="22" height="16"/><rect x="134" y="506" width="20" height="18"/>
+    <rect x="158" y="508" width="22" height="16"/><rect x="184" y="506" width="20" height="16"/>
+    <!-- South west -->
+    <rect x="120" y="580" width="22" height="16"/><rect x="146" y="578" width="20" height="18"/>
+    <rect x="170" y="580" width="22" height="16"/><rect x="196" y="578" width="20" height="18"/>
+    <rect x="120" y="620" width="22" height="16"/><rect x="146" y="618" width="20" height="18"/>
+    <rect x="170" y="620" width="22" height="16"/>
+  </g>
+  <!-- East blocks - slightly bigger buildings, more wealth -->
+  <g fill="#d8aa60" stroke="#8a6030" stroke-width="0.9" opacity="0.85">
+    <rect x="740" y="140" width="26" height="18"/><rect x="770" y="138" width="22" height="20"/>
+    <rect x="796" y="140" width="26" height="18"/><rect x="826" y="138" width="22" height="18"/>
+    <rect x="738" y="196" width="26" height="18"/><rect x="768" y="194" width="22" height="20"/>
+    <rect x="794" y="196" width="26" height="18"/><rect x="824" y="194" width="22" height="18"/>
+    <rect x="736" y="260" width="26" height="18"/><rect x="766" y="258" width="22" height="20"/>
+    <rect x="792" y="260" width="26" height="18"/><rect x="822" y="258" width="22" height="18"/>
+    <rect x="734" y="320" width="26" height="18"/><rect x="764" y="318" width="22" height="20"/>
+    <rect x="790" y="320" width="26" height="18"/><rect x="820" y="318" width="22" height="18"/>
+    <rect x="734" y="400" width="26" height="18"/><rect x="764" y="398" width="22" height="20"/>
+    <rect x="790" y="400" width="26" height="18"/><rect x="820" y="398" width="22" height="18"/>
+    <rect x="736" y="460" width="26" height="18"/><rect x="766" y="458" width="22" height="20"/>
+    <rect x="792" y="460" width="26" height="18"/><rect x="822" y="458" width="22" height="18"/>
+    <rect x="740" y="510" width="26" height="18"/><rect x="770" y="508" width="22" height="20"/>
+    <rect x="796" y="510" width="26" height="18"/>
+    <!-- South east -->
+    <rect x="650" y="600" width="26" height="18"/><rect x="680" y="598" width="22" height="20"/>
+    <rect x="706" y="600" width="26" height="18"/><rect x="736" y="598" width="22" height="18"/>
+    <rect x="650" y="640" width="26" height="18"/><rect x="680" y="638" width="22" height="20"/>
+    <rect x="706" y="640" width="26" height="18"/>
+  </g>
+  <!-- Central spine buildings -->
+  <g fill="#d4a858" stroke="#8a6030" stroke-width="0.9" opacity="0.85">
+    <rect x="310" y="90" width="22" height="16"/><rect x="336" y="88" width="20" height="18"/>
+    <rect x="360" y="86" width="22" height="16"/><rect x="386" y="84" width="20" height="18"/>
+    <rect x="414" y="83" width="22" height="16"/><rect x="440" y="82" width="20" height="17"/>
+    <rect x="310" y="132" width="22" height="16"/><rect x="336" y="130" width="20" height="18"/>
+    <rect x="360" y="128" width="22" height="16"/><rect x="386" y="126" width="20" height="18"/>
+    <rect x="540" y="82" width="22" height="16"/><rect x="566" y="84" width="20" height="17"/>
+    <rect x="592" y="86" width="22" height="16"/><rect x="618" y="88" width="20" height="16"/>
+    <rect x="644" y="90" width="22" height="16"/>
+    <rect x="540" y="128" width="22" height="16"/><rect x="566" y="130" width="20" height="17"/>
+    <rect x="592" y="128" width="22" height="16"/><rect x="618" y="130" width="20" height="16"/>
+    <!-- South central -->
+    <rect x="310" y="560" width="22" height="16"/><rect x="336" y="558" width="20" height="18"/>
+    <rect x="360" y="556" width="22" height="16"/><rect x="386" y="558" width="20" height="18"/>
+    <rect x="414" y="560" width="22" height="16"/><rect x="440" y="562" width="20" height="16"/>
+    <rect x="540" y="560" width="22" height="16"/><rect x="566" y="558" width="20" height="16"/>
+    <rect x="592" y="556" width="22" height="16"/><rect x="618" y="558" width="20" height="16"/>
+    <rect x="644" y="560" width="22" height="16"/>
+    <rect x="310" y="620" width="22" height="16"/><rect x="336" y="618" width="20" height="18"/>
+    <rect x="360" y="616" width="22" height="16"/><rect x="386" y="618" width="20" height="18"/>
+    <rect x="540" y="620" width="22" height="16"/><rect x="566" y="618" width="20" height="16"/>
+    <rect x="592" y="616" width="22" height="16"/><rect x="618" y="618" width="20" height="16"/>
+    <!-- South fill -->
+    <rect x="310" y="700" width="22" height="16"/><rect x="336" y="698" width="20" height="18"/>
+    <rect x="360" y="700" width="22" height="16"/><rect x="386" y="698" width="20" height="18"/>
+    <rect x="414" y="700" width="22" height="16"/><rect x="440" y="698" width="20" height="16"/>
+    <rect x="540" y="700" width="22" height="16"/><rect x="566" y="698" width="20" height="16"/>
+    <rect x="592" y="700" width="22" height="16"/><rect x="618" y="698" width="20" height="16"/>
+    <rect x="644" y="700" width="22" height="16"/>
+  </g>
+  <!-- South district fill -->
+  <g fill="#c89848" stroke="#8a6030" stroke-width="0.9" opacity="0.75">
+    <rect x="220" y="680" width="22" height="16"/><rect x="246" y="678" width="20" height="18"/>
+    <rect x="270" y="680" width="22" height="16"/>
+    <rect x="220" y="730" width="22" height="16"/><rect x="246" y="728" width="20" height="18"/>
+    <rect x="270" y="730" width="22" height="16"/>
+    <rect x="460" y="760" width="22" height="16"/><rect x="486" y="758" width="20" height="18"/>
+    <rect x="510" y="760" width="22" height="16"/>
+    <rect x="460" y="800" width="22" height="16"/><rect x="486" y="798" width="20" height="16"/>
+    <!-- Unfinished/construction feel in south -->
+    <rect x="580" y="760" width="18" height="14" opacity="0.5"/><rect x="602" y="762" width="16" height="12" opacity="0.5"/>
+    <rect x="630" y="758" width="18" height="14" opacity="0.5"/>
+    <rect x="700" y="730" width="18" height="14" opacity="0.5"/><rect x="722" y="732" width="16" height="12" opacity="0.5"/>
+  </g>
+
+  <!-- ── THE TWILIGHT TAVERN ── -->
+  <g transform="translate(140,220)" filter="url(#hm-drop)">
+    <!-- Main building - larger, distinctive -->
+    <rect x="-44" y="-36" width="88" height="72" fill="#2a1a28" stroke="#3a2415" stroke-width="2"/>
+    <!-- Roof detail - slightly purple tint -->
+    <rect x="-44" y="-36" width="88" height="72" fill="#4a2848" opacity="0.6"/>
+    <!-- The eye symbol above door -->
+    <ellipse cx="0" cy="-24" rx="12" ry="8" fill="none" stroke="#c0a0e0" stroke-width="1.5"/>
+    <ellipse cx="0" cy="-24" rx="5" ry="5" fill="#9060a0" stroke="#c0a0e0" stroke-width="1"/>
+    <!-- Door -->
+    <rect x="-8" y="20" width="16" height="16" fill="#1a0e18" stroke="#5a3a5a" stroke-width="1.2"/>
+    <!-- Windows -->
+    <rect x="-36" y="-20" width="12" height="10" fill="#3a1a38" stroke="#5a3a5a" stroke-width="1"/>
+    <rect x="24" y="-20" width="12" height="10" fill="#3a1a38" stroke="#5a3a5a" stroke-width="1"/>
+    <rect x="-36" y="4" width="12" height="10" fill="#3a1a38" stroke="#5a3a5a" stroke-width="1"/>
+    <rect x="24" y="4" width="12" height="10" fill="#3a1a38" stroke="#5a3a5a" stroke-width="1"/>
+  </g>
+
+  <!-- ── GHALLANDA HOUSE ── -->
+  <g transform="translate(490,200)" filter="url(#hm-drop)">
+    <rect x="-40" y="-30" width="80" height="60" fill="#c8a458" stroke="#3a2415" stroke-width="2"/>
+    <!-- Ghallanda seal (diamond shape) -->
+    <polygon points="0,-18 12,-2 0,14 -12,-2" fill="none" stroke="#8a6030" stroke-width="1.5"/>
+    <circle cx="0" cy="-2" r="4" fill="#a07040" stroke="#8a6030" stroke-width="1"/>
+    <!-- Door -->
+    <rect x="-8" y="16" width="16" height="14" fill="#6a4a20" stroke="#3a2415" stroke-width="1.2"/>
+    <!-- Windows -->
+    <rect x="-32" y="-16" width="14" height="10" fill="#dcc878" stroke="#8a6030" stroke-width="0.8"/>
+    <rect x="18" y="-16" width="14" height="10" fill="#dcc878" stroke="#8a6030" stroke-width="0.8"/>
+  </g>
+
+  <!-- ── GILDED MENAGERIE (House Vadalis) ── -->
+  <g transform="translate(680,350)" filter="url(#hm-drop)">
+    <!-- White marble base -->
+    <rect x="-52" y="-44" width="104" height="88" fill="#f0ead8" stroke="#c8a858" stroke-width="2.5"/>
+    <!-- Gold-leafed arch detail -->
+    <path d="M -30 -44 Q 0 -62 30 -44" fill="none" stroke="#c8a030" stroke-width="3"/>
+    <!-- Dome top -->
+    <ellipse cx="0" cy="-44" rx="30" ry="12" fill="#e8d890" stroke="#c8a030" stroke-width="1.5"/>
+    <!-- Manticore statues (simplified) -->
+    <rect x="-56" y="-10" width="8" height="20" fill="#e0d4b8" stroke="#c8a858" stroke-width="1"/>
+    <rect x="48" y="-10" width="8" height="20" fill="#e0d4b8" stroke="#c8a858" stroke-width="1"/>
+    <!-- Grand entrance -->
+    <rect x="-16" y="24" width="32" height="20" fill="#d4c890" stroke="#c8a030" stroke-width="1.5"/>
+    <path d="M -16 24 Q 0 14 16 24" fill="#e8d870" stroke="#c8a030" stroke-width="1.5"/>
+    <!-- Windows - stained glass hint -->
+    <rect x="-40" y="-28" width="16" height="20" fill="#b8d8c0" stroke="#c8a858" stroke-width="1" opacity="0.8"/>
+    <rect x="24" y="-28" width="16" height="20" fill="#d8c0b8" stroke="#c8a858" stroke-width="1" opacity="0.8"/>
+  </g>
+
+  <!-- ── HOUSE KUNDARAK ENCLAVE ── -->
+  <g transform="translate(720,540)" filter="url(#hm-drop)">
+    <!-- Heavy stone, iron-banded look -->
+    <rect x="-46" y="-38" width="92" height="76" fill="#8a8070" stroke="#3a3028" stroke-width="3"/>
+    <!-- Stone texture bands -->
+    <line x1="-46" y1="-14" x2="46" y2="-14" stroke="#5a5048" stroke-width="1.5"/>
+    <line x1="-46" y1="10" x2="46" y2="10" stroke="#5a5048" stroke-width="1.5"/>
+    <!-- Narrow windows -->
+    <rect x="-32" y="-28" width="8" height="16" fill="#2a2820" stroke="#3a3028" stroke-width="1"/>
+    <rect x="-10" y="-28" width="8" height="16" fill="#2a2820" stroke="#3a3028" stroke-width="1"/>
+    <rect x="12" y="-28" width="8" height="16" fill="#2a2820" stroke="#3a3028" stroke-width="1"/>
+    <rect x="34" y="-28" width="8" height="16" fill="#2a2820" stroke="#3a3028" stroke-width="1"/>
+    <!-- Iron-banded door -->
+    <rect x="-12" y="18" width="24" height="20" fill="#2a2820" stroke="#5a5048" stroke-width="2"/>
+    <line x1="-12" y1="28" x2="12" y2="28" stroke="#7a7060" stroke-width="1.5"/>
+    <!-- Kundarak diamond seal -->
+    <polygon points="0,-10 6,0 0,10 -6,0" fill="none" stroke="#c8b060" stroke-width="1.5" transform="translate(0,-44) scale(1.2)"/>
+  </g>
+
+  <!-- ── LOCATION NUMBER MARKERS ── -->
+  <g font-family="Cinzel,Georgia,serif" font-weight="700">
+    <!-- 1: Twilight Tavern -->
+    <g transform="translate(140,220)">
+      <circle r="13" fill="#4a2848" stroke="#c0a0e0" stroke-width="1.8"/>
+      <text font-size="13" fill="#e8d0f8" text-anchor="middle" y="4">1</text>
+    </g>
+    <!-- 2: Ghallanda House -->
+    <g transform="translate(490,200)">
+      <circle r="13" fill="#3a2415" stroke="#f3e6c2" stroke-width="1.6"/>
+      <text font-size="13" fill="#f3e6c2" text-anchor="middle" y="4">2</text>
+    </g>
+    <!-- 3: Gilded Menagerie -->
+    <g transform="translate(680,350)">
+      <circle r="13" fill="#3a2415" stroke="#f3e6c2" stroke-width="1.6"/>
+      <text font-size="13" fill="#f3e6c2" text-anchor="middle" y="4">3</text>
+    </g>
+    <!-- 4: Kundarak Enclave -->
+    <g transform="translate(720,540)">
+      <circle r="13" fill="#3a2415" stroke="#f3e6c2" stroke-width="1.6"/>
+      <text font-size="13" fill="#f3e6c2" text-anchor="middle" y="4">4</text>
+    </g>
+  </g>
+
+  <!-- LOCATION LABELS -->
+  <g font-family="Cinzel,Georgia,serif" font-size="11" font-weight="700" letter-spacing="0.05em">
+    <g transform="translate(140,268)" text-anchor="middle">
+      <rect x="-60" y="-13" width="120" height="17" rx="2" fill="#2a1428" opacity="0.88"/>
+      <text fill="#e0c0f0">The Twilight Tavern</text>
+    </g>
+    <g transform="translate(490,242)" text-anchor="middle">
+      <rect x="-60" y="-13" width="120" height="17" rx="2" fill="#f3e6c2" opacity="0.88"/>
+      <text fill="#3a2415">Gold Dragon Inn</text>
+    </g>
+    <g transform="translate(680,406)" text-anchor="middle">
+      <rect x="-66" y="-13" width="132" height="17" rx="2" fill="#f3e6c2" opacity="0.88"/>
+      <text fill="#3a2415">Gilded Menagerie</text>
+    </g>
+    <g transform="translate(720,592)" text-anchor="middle">
+      <rect x="-72" y="-13" width="144" height="17" rx="2" fill="#f3e6c2" opacity="0.88"/>
+      <text fill="#3a2415">Kundarak Enclave</text>
+    </g>
+  </g>
+
+  <!-- Compass -->
+  <g transform="translate(900,80)">
+    <circle r="40" fill="#f3e6c2" stroke="#3a2415" stroke-width="1.2"/>
+    <circle r="34" fill="none" stroke="#5a3a22" stroke-width="0.6"/>
+    <circle r="3" fill="#3a2415"/>
+    <g stroke="#3a2415" stroke-width="1.2" fill="#3a2415">
+      <path d="M0 -36 L4 -5 L-4 -5 Z"/>
+      <path d="M0 36 L-4 5 L4 5 Z" opacity="0.85"/>
+      <path d="M36 0 L5 -4 L5 4 Z" opacity="0.85"/>
+      <path d="M-36 0 L-5 4 L-5 -4 Z" opacity="0.85"/>
+    </g>
+    <text font-family="Palatino,Georgia,serif" font-weight="700" font-size="12" text-anchor="middle" y="-20" fill="#3a2415">N</text>
+  </g>
+
+  <!-- Title -->
+  <g transform="translate(50,50)">
+    <rect x="-10" y="-28" width="240" height="44" rx="3" fill="#3a2415" opacity="0.85"/>
+    <text font-family="Cinzel,Georgia,serif" font-size="17" font-weight="700" letter-spacing="0.2em" fill="#f3e6c2" y="0">HIGHMARKET REACH</text>
+    <text font-family="Palatino,Georgia,serif" font-size="11" font-style="italic" fill="#b89766" y="14">where the new money lives</text>
+  </g>
+
+  <!-- Connection to Old Core indicator -->
+  <g transform="translate(490,870)">
+    <path d="M 0 0 L 0 20" stroke="#a64a30" stroke-width="4" stroke-dasharray="4,3"/>
+    <text font-family="Cinzel,Georgia,serif" font-size="10" fill="#7a4a20" text-anchor="middle" y="32" letter-spacing="0.1em">to Old Core</text>
+  </g>
+</svg>
+`,
+  'old-core': `<svg viewBox="0 0 1000 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="oc-drop" x="-10%" y="-10%" width="130%" height="130%">
+      <feOffset in="SourceAlpha" dx="0.8" dy="1.6"/>
+      <feGaussianBlur stdDeviation="0.8"/>
+      <feColorMatrix values="0 0 0 0 0.22  0 0 0 0 0.13  0 0 0 0 0.07  0 0 0 0.5 0"/>
+      <feComposite in2="SourceGraphic" operator="out" result="s"/>
+      <feMerge><feMergeNode in="s"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="oc-grain" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+      <rect width="60" height="60" fill="transparent"/>
+      <circle cx="7" cy="9" r="0.5" fill="#5a3a23" opacity="0.3"/>
+      <circle cx="22" cy="3" r="0.5" fill="#5a3a23" opacity="0.25"/>
+      <circle cx="33" cy="18" r="0.5" fill="#5a3a23" opacity="0.3"/>
+      <circle cx="51" cy="11" r="0.5" fill="#5a3a23" opacity="0.25"/>
+      <circle cx="13" cy="28" r="0.5" fill="#5a3a23" opacity="0.3"/>
+      <circle cx="44" cy="34" r="0.5" fill="#5a3a23" opacity="0.25"/>
+      <circle cx="28" cy="44" r="0.5" fill="#5a3a23" opacity="0.3"/>
+      <circle cx="8" cy="51" r="0.5" fill="#5a3a23" opacity="0.25"/>
+      <circle cx="49" cy="56" r="0.5" fill="#5a3a23" opacity="0.3"/>
+    </pattern>
+    <pattern id="oc-grass" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <rect width="40" height="40" fill="#bca878"/>
+      <g stroke="#7a8a52" stroke-width="0.6" stroke-linecap="round" fill="none">
+        <path d="M6 28 q1 -4 0 -8"/><path d="M18 14 q1 -4 0 -8"/>
+        <path d="M30 30 q1 -4 0 -8"/><path d="M12 38 q1 -3 0 -6"/>
+        <path d="M34 8 q1 -3 0 -6"/>
+      </g>
+    </pattern>
+  </defs>
+
+  <!-- Background grass -->
+  <rect width="1000" height="900" fill="url(#oc-grass)"/>
+
+  <!-- ── FORTIFIED WALL (full ring, slightly irregular) ── -->
+  <path d="M 200 80 Q 400 50 600 65 Q 780 75 840 140 Q 880 200 870 380 Q 860 560 820 680 Q 770 790 640 840 Q 500 870 360 845 Q 220 815 160 710 Q 110 600 120 420 Q 130 240 160 160 Q 175 110 200 80 Z"
+    fill="#c8a96a" stroke="#5a3a1a" stroke-width="14" filter="url(#oc-drop)"/>
+
+  <!-- Wall inner face -->
+  <path d="M 220 100 Q 400 72 590 85 Q 760 96 815 158 Q 850 215 840 385 Q 828 555 792 668 Q 745 768 622 816 Q 492 844 366 820 Q 238 792 182 692 Q 136 588 146 418 Q 156 252 182 175 Q 196 128 220 100 Z"
+    fill="#d6b988" stroke="#7a4a28" stroke-width="3"/>
+
+  <!-- Wall grain texture -->
+  <path d="M 200 80 Q 400 50 600 65 Q 780 75 840 140 Q 880 200 870 380 Q 860 560 820 680 Q 770 790 640 840 Q 500 870 360 845 Q 220 815 160 710 Q 110 600 120 420 Q 130 240 160 160 Q 175 110 200 80 Z"
+    fill="url(#oc-grain)" opacity="0.5"/>
+
+  <!-- Wall battlements (decorative tick marks) -->
+  <g stroke="#5a3a1a" stroke-width="3" stroke-linecap="round">
+    <!-- North wall ticks -->
+    <line x1="240" y1="82" x2="240" y2="62"/><line x1="280" y1="74" x2="280" y2="54"/>
+    <line x1="320" y1="68" x2="320" y2="48"/><line x1="360" y1="64" x2="360" y2="44"/>
+    <line x1="400" y1="62" x2="400" y2="42"/><line x1="440" y1="62" x2="440" y2="42"/>
+    <line x1="480" y1="63" x2="480" y2="43"/><line x1="520" y1="65" x2="520" y2="45"/>
+    <line x1="560" y1="68" x2="560" y2="48"/><line x1="600" y1="72" x2="600" y2="52"/>
+    <!-- East wall ticks -->
+    <line x1="848" y1="200" x2="866" y2="194"/><line x1="856" y1="260" x2="874" y2="256"/>
+    <line x1="860" y1="320" x2="878" y2="318"/><line x1="860" y1="380" x2="878" y2="380"/>
+    <line x1="856" y1="440" x2="874" y2="442"/><line x1="848" y1="500" x2="866" y2="504"/>
+    <!-- South wall ticks -->
+    <line x1="640" y1="838" x2="638" y2="858"/><line x1="580" y1="848" x2="578" y2="868"/>
+    <line x1="520" y1="854" x2="518" y2="874"/><line x1="460" y1="856" x2="458" y2="876"/>
+    <line x1="400" y1="854" x2="398" y2="874"/><line x1="340" y1="848" x2="338" y2="868"/>
+    <!-- West wall ticks -->
+    <line x1="134" y1="480" x2="116" y2="478"/><line x1="128" y1="420" x2="110" y2="418"/>
+    <line x1="130" y1="360" x2="112" y2="356"/><line x1="138" y1="300" x2="120" y2="294"/>
+    <line x1="150" y1="240" x2="133" y2="232"/>
+  </g>
+
+  <!-- Wall watchtowers (corner-ish positions) -->
+  <g fill="#b89060" stroke="#5a3a1a" stroke-width="2">
+    <rect x="182" y="115" width="28" height="28" rx="2"/>
+    <rect x="814" y="128" width="28" height="28" rx="2"/>
+    <rect x="794" y="658" width="28" height="28" rx="2"/>
+    <rect x="148" y="678" width="28" height="28" rx="2"/>
+  </g>
+  <g fill="#5a3a1a" font-family="serif" font-size="14" text-anchor="middle">
+    <text x="196" y="134">✦</text>
+    <text x="828" y="147">✦</text>
+    <text x="808" y="677">✦</text>
+    <text x="162" y="697">✦</text>
+  </g>
+
+  <!-- ── DENSE OUTER RING (buildings near wall) ── -->
+  <g fill="#c09060" stroke="#8a6030" stroke-width="0.8" opacity="0.85">
+    <!-- North ring buildings -->
+    <rect x="230" y="105" width="18" height="14"/><rect x="252" y="108" width="22" height="12"/>
+    <rect x="278" y="104" width="16" height="16"/><rect x="298" y="106" width="20" height="13"/>
+    <rect x="322" y="102" width="18" height="15"/><rect x="344" y="100" width="24" height="14"/>
+    <rect x="372" y="98" width="16" height="16"/><rect x="392" y="96" width="22" height="15"/>
+    <rect x="418" y="95" width="18" height="16"/><rect x="440" y="94" width="20" height="17"/>
+    <rect x="464" y="95" width="18" height="16"/><rect x="486" y="96" width="22" height="15"/>
+    <rect x="512" y="98" width="16" height="16"/><rect x="532" y="100" width="20" height="14"/>
+    <rect x="556" y="103" width="18" height="14"/><rect x="578" y="106" width="22" height="13"/>
+    <!-- East ring -->
+    <rect x="820" y="175" width="14" height="18"/><rect x="822" y="197" width="16" height="16"/>
+    <rect x="824" y="217" width="14" height="20"/><rect x="826" y="241" width="14" height="18"/>
+    <rect x="828" y="263" width="14" height="18"/><rect x="830" y="285" width="12" height="20"/>
+    <rect x="830" y="309" width="14" height="18"/><rect x="829" y="331" width="14" height="20"/>
+    <rect x="828" y="355" width="14" height="18"/><rect x="826" y="378" width="14" height="20"/>
+    <rect x="824" y="402" width="14" height="18"/><rect x="822" y="425" width="14" height="18"/>
+    <rect x="820" y="448" width="14" height="20"/><rect x="818" y="472" width="14" height="18"/>
+    <rect x="814" y="496" width="14" height="18"/><rect x="810" y="518" width="14" height="20"/>
+    <!-- South ring -->
+    <rect x="620" y="816" width="18" height="14"/><rect x="596" y="822" width="20" height="13"/>
+    <rect x="572" y="826" width="18" height="14"/><rect x="548" y="830" width="20" height="13"/>
+    <rect x="524" y="832" width="18" height="13"/><rect x="500" y="834" width="20" height="12"/>
+    <rect x="476" y="834" width="18" height="13"/><rect x="452" y="832" width="20" height="13"/>
+    <rect x="428" y="830" width="18" height="14"/><rect x="404" y="826" width="20" height="14"/>
+    <rect x="380" y="820" width="18" height="14"/><rect x="356" y="814" width="20" height="14"/>
+    <!-- West ring -->
+    <rect x="158" y="500" width="14" height="18"/><rect x="154" y="476" width="14" height="20"/>
+    <rect x="150" y="452" width="14" height="18"/><rect x="148" y="428" width="14" height="20"/>
+    <rect x="148" y="404" width="14" height="18"/><rect x="150" y="380" width="14" height="18"/>
+    <rect x="152" y="356" width="14" height="20"/><rect x="155" y="332" width="14" height="18"/>
+    <rect x="158" y="308" width="14" height="18"/><rect x="162" y="284" width="14" height="20"/>
+    <rect x="168" y="260" width="14" height="18"/><rect x="175" y="236" width="14" height="18"/>
+    <rect x="183" y="212" width="14" height="18"/><rect x="192" y="188" width="14" height="18"/>
+  </g>
+
+  <!-- ── QUEEN'S GATE (south, on trade road) ── -->
+  <g transform="translate(490,830)">
+    <rect x="-26" y="-8" width="52" height="32" fill="#b89060" stroke="#3a2415" stroke-width="2.5"/>
+    <rect x="-10" y="-8" width="20" height="22" fill="#0e0a04" stroke="#3a2415" stroke-width="1.5"/>
+    <!-- Gate arch -->
+    <path d="M -10 14 Q 0 4 10 14" fill="#0e0a04" stroke="#3a2415" stroke-width="1.5"/>
+    <!-- Crenellations -->
+    <g fill="#b89060" stroke="#3a2415" stroke-width="1.5">
+      <rect x="-26" y="-18" width="10" height="10"/><rect x="-12" y="-18" width="10" height="10"/>
+      <rect x="2" y="-18" width="10" height="10"/><rect x="16" y="-18" width="10" height="10"/>
+    </g>
+  </g>
+
+  <!-- ── HARVEST GATE (north, on trade road) ── -->
+  <g transform="translate(490,78)">
+    <rect x="-26" y="-24" width="52" height="32" fill="#b89060" stroke="#3a2415" stroke-width="2.5"/>
+    <rect x="-10" y="-8" width="20" height="22" fill="#0e0a04" stroke="#3a2415" stroke-width="1.5"/>
+    <path d="M -10 14 Q 0 4 10 14" fill="#0e0a04" stroke="#3a2415" stroke-width="1.5"/>
+    <g fill="#b89060" stroke="#3a2415" stroke-width="1.5">
+      <rect x="-26" y="-34" width="10" height="10"/><rect x="-12" y="-34" width="10" height="10"/>
+      <rect x="2" y="-34" width="10" height="10"/><rect x="16" y="-34" width="10" height="10"/>
+    </g>
+  </g>
+
+  <!-- ── TRADE ROAD (north-south) ── -->
+  <path d="M 490 44 L 490 830" stroke="#a64a30" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <!-- East-west road -->
+  <path d="M 220 450 Q 490 440 820 460" stroke="#a64a30" stroke-width="8" fill="none" stroke-linecap="round"/>
+
+  <!-- Inner streets -->
+  <g stroke="#b86a48" stroke-width="4" fill="none" stroke-linecap="round">
+    <!-- Rings around center -->
+    <ellipse cx="490" cy="450" rx="180" ry="160"/>
+    <path d="M 330 350 Q 490 320 650 350"/>
+    <path d="M 310 560 Q 490 590 670 560"/>
+    <!-- Spokes -->
+    <path d="M 490 290 L 490 180"/><path d="M 490 610 L 490 740"/>
+    <path d="M 310 450 L 200 450"/><path d="M 670 450 L 780 450"/>
+    <path d="M 360 340 L 280 240"/><path d="M 620 340 L 700 240"/>
+    <path d="M 360 560 L 270 660"/><path d="M 620 560 L 710 660"/>
+    <!-- Additional inner streets -->
+    <path d="M 380 380 Q 490 360 600 380"/>
+    <path d="M 370 520 Q 490 540 610 520"/>
+    <path d="M 420 310 L 400 210"/><path d="M 560 310 L 580 210"/>
+    <path d="M 280 380 L 220 320"/><path d="M 700 380 L 760 320"/>
+    <path d="M 270 520 L 210 580"/><path d="M 720 520 L 780 580"/>
+  </g>
+
+  <!-- ── AUNDAIRIAN INNER BUILDINGS (more open, nicer) ── -->
+  <g fill="#d4a870" stroke="#8a6030" stroke-width="0.9">
+    <!-- Around government house area -->
+    <rect x="370" y="240" width="24" height="18"/><rect x="398" y="238" width="20" height="20"/>
+    <rect x="422" y="235" width="18" height="22"/><rect x="540" y="238" width="20" height="20"/>
+    <rect x="564" y="240" width="22" height="18"/><rect x="590" y="243" width="18" height="16"/>
+    <!-- Around crown market -->
+    <rect x="362" y="490" width="22" height="18"/><rect x="388" y="492" width="18" height="20"/>
+    <rect x="540" y="490" width="20" height="18"/><rect x="564" y="488" width="22" height="20"/>
+    <!-- West inner -->
+    <rect x="260" y="360" width="22" height="16"/><rect x="286" y="358" width="18" height="18"/>
+    <rect x="260" y="500" width="22" height="16"/><rect x="286" y="498" width="18" height="18"/>
+    <!-- East inner -->
+    <rect x="680" y="360" width="22" height="16"/><rect x="706" y="358" width="18" height="18"/>
+    <rect x="680" y="500" width="22" height="16"/><rect x="706" y="498" width="18" height="18"/>
+  </g>
+
+  <!-- ── CITY WATCH BARRACKS (near Queen's Gate, south) ── -->
+  <g transform="translate(370,730)" filter="url(#oc-drop)">
+    <rect x="-38" y="-28" width="76" height="56" fill="#a08050" stroke="#3a2415" stroke-width="1.8"/>
+    <!-- Barracks roof lines -->
+    <line x1="-38" y1="-4" x2="38" y2="-4" stroke="#3a2415" stroke-width="1"/>
+    <line x1="-38" y1="16" x2="38" y2="16" stroke="#3a2415" stroke-width="1"/>
+    <!-- Small guard post -->
+    <rect x="30" y="-38" width="16" height="20" fill="#b89060" stroke="#3a2415" stroke-width="1.5"/>
+    <rect x="30" y="-48" width="6" height="10" fill="#b89060" stroke="#3a2415" stroke-width="1"/>
+    <rect x="40" y="-48" width="6" height="10" fill="#b89060" stroke="#3a2415" stroke-width="1"/>
+  </g>
+
+  <!-- ── OLD YARD MARKET (northwest of center) ── -->
+  <g transform="translate(400,200)" filter="url(#oc-drop)">
+    <!-- Market square -->
+    <rect x="-45" y="-35" width="90" height="70" fill="#c8a458" stroke="#3a2415" stroke-width="1.5"/>
+    <!-- Market stalls -->
+    <g fill="#b08040" stroke="#3a2415" stroke-width="1">
+      <rect x="-38" y="-28" width="16" height="14"/>
+      <rect x="-18" y="-28" width="16" height="14"/>
+      <rect x="2" y="-28" width="16" height="14"/>
+      <rect x="22" y="-28" width="16" height="14"/>
+      <rect x="-38" y="-8" width="16" height="14"/>
+      <rect x="22" y="-8" width="16" height="14"/>
+    </g>
+    <!-- Well in center -->
+    <circle cx="0" cy="4" r="8" fill="#a08040" stroke="#3a2415" stroke-width="1.5"/>
+    <circle cx="0" cy="4" r="4" fill="#3a2415"/>
+  </g>
+
+  <!-- ── GOVERNMENT HOUSE ── -->
+  <g transform="translate(490,340)" filter="url(#oc-drop)">
+    <rect x="-52" y="-40" width="104" height="80" fill="#d4b070" stroke="#3a2415" stroke-width="2"/>
+    <!-- Columns -->
+    <g fill="#c8a458" stroke="#3a2415" stroke-width="1.2">
+      <rect x="-40" y="-40" width="8" height="80"/>
+      <rect x="-20" y="-40" width="8" height="80"/>
+      <rect x="12" y="-40" width="8" height="80"/>
+      <rect x="32" y="-40" width="8" height="80"/>
+    </g>
+    <!-- Steps -->
+    <rect x="-56" y="36" width="112" height="8" fill="#c8a458" stroke="#3a2415" stroke-width="1"/>
+    <rect x="-60" y="42" width="120" height="6" fill="#b89060" stroke="#3a2415" stroke-width="1"/>
+  </g>
+
+  <!-- ── CLOCKWORK CATHEDRAL ── -->
+  <g transform="translate(330,330)" filter="url(#oc-drop)">
+    <!-- Main body -->
+    <rect x="-32" y="-28" width="64" height="56" fill="#c8a458" stroke="#3a2415" stroke-width="2"/>
+    <!-- Tower -->
+    <rect x="-10" y="-58" width="20" height="30" fill="#b89060" stroke="#3a2415" stroke-width="1.5"/>
+    <!-- Spire -->
+    <polygon points="0,-78 -8,-58 8,-58" fill="#a07840" stroke="#3a2415" stroke-width="1.5"/>
+    <!-- Gear window -->
+    <circle cx="0" cy="-10" r="12" fill="none" stroke="#3a2415" stroke-width="2"/>
+    <circle cx="0" cy="-10" r="6" fill="none" stroke="#3a2415" stroke-width="1.5"/>
+    <line x1="0" y1="-22" x2="0" y2="2" stroke="#3a2415" stroke-width="1.5"/>
+    <line x1="-12" y1="-10" x2="12" y2="-10" stroke="#3a2415" stroke-width="1.5"/>
+  </g>
+
+  <!-- ── CROWN MARKET PLAZA ── -->
+  <g transform="translate(490,490)" filter="url(#oc-drop)">
+    <!-- Plaza ground -->
+    <rect x="-60" y="-40" width="120" height="80" fill="#c8a458" stroke="#3a2415" stroke-width="1.5"/>
+    <!-- Stall rows -->
+    <g fill="#b08040" stroke="#3a2415" stroke-width="1">
+      <rect x="-52" y="-32" width="14" height="12"/><rect x="-34" y="-32" width="14" height="12"/>
+      <rect x="-16" y="-32" width="14" height="12"/><rect x="2" y="-32" width="14" height="12"/>
+      <rect x="20" y="-32" width="14" height="12"/><rect x="38" y="-32" width="14" height="12"/>
+      <rect x="-52" y="8" width="14" height="12"/><rect x="38" y="8" width="14" height="12"/>
+    </g>
+    <!-- Center fountain -->
+    <circle cx="0" cy="8" r="14" fill="#9ab0c0" stroke="#3a2415" stroke-width="1.5"/>
+    <circle cx="0" cy="8" r="6" fill="#7a98b0" stroke="#3a2415" stroke-width="1"/>
+  </g>
+
+  <!-- ── COLORFUL ALLEY (hidden, north-west area) ── -->
+  <g transform="translate(290,190)">
+    <!-- Subtle alley path - less prominent than other locations -->
+    <path d="M -6 -30 Q 2 0 -4 30" stroke="#7a6a90" stroke-width="3" fill="none" stroke-dasharray="4,3"/>
+    <!-- Subtle color dots -->
+    <circle cx="-8" cy="-15" r="3" fill="#d04a4a" opacity="0.7"/>
+    <circle cx="4" cy="-2" r="3" fill="#3a8fd0" opacity="0.7"/>
+    <circle cx="-6" cy="12" r="3" fill="#d0c84a" opacity="0.7"/>
+    <circle cx="5" cy="24" r="3" fill="#7a4ad0" opacity="0.7"/>
+  </g>
+
+
+  <!-- Additional inner buildings for density -->
+  <g fill="#d4a870" stroke="#8a6030" stroke-width="0.9" opacity="0.8">
+    <!-- North inner, around Old Yard -->
+    <rect x="350" y="155" width="20" height="15"/><rect x="374" y="152" width="16" height="18"/>
+    <rect x="440" y="150" width="20" height="15"/><rect x="464" y="153" width="16" height="16"/>
+    <rect x="520" y="152" width="18" height="15"/><rect x="542" y="155" width="16" height="14"/>
+    <rect x="610" y="158" width="20" height="15"/><rect x="634" y="160" width="16" height="14"/>
+    <!-- West inner ring -->
+    <rect x="220" y="300" width="18" height="14"/><rect x="242" y="298" width="16" height="16"/>
+    <rect x="220" y="340" width="18" height="14"/><rect x="242" y="338" width="16" height="16"/>
+    <rect x="210" y="400" width="18" height="14"/><rect x="232" y="398" width="16" height="16"/>
+    <rect x="215" y="440" width="18" height="14"/><rect x="237" y="438" width="16" height="16"/>
+    <rect x="225" y="480" width="18" height="14"/><rect x="247" y="478" width="16" height="16"/>
+    <rect x="235" y="520" width="18" height="14"/><rect x="257" y="518" width="16" height="16"/>
+    <rect x="248" y="558" width="18" height="14"/><rect x="270" y="556" width="16" height="16"/>
+    <!-- East inner ring -->
+    <rect x="730" y="300" width="18" height="14"/><rect x="752" y="298" width="16" height="16"/>
+    <rect x="740" y="340" width="18" height="14"/><rect x="762" y="338" width="16" height="16"/>
+    <rect x="748" y="400" width="18" height="14"/><rect x="770" y="398" width="16" height="16"/>
+    <rect x="742" y="440" width="18" height="14"/><rect x="764" y="438" width="16" height="16"/>
+    <rect x="730" y="480" width="18" height="14"/><rect x="752" y="478" width="16" height="16"/>
+    <rect x="718" y="520" width="18" height="14"/><rect x="740" y="518" width="16" height="16"/>
+    <rect x="700" y="558" width="18" height="14"/><rect x="722" y="556" width="16" height="16"/>
+    <!-- South inner, around barracks area -->
+    <rect x="430" y="680" width="20" height="15"/><rect x="454" y="682" width="16" height="14"/>
+    <rect x="530" y="680" width="20" height="15"/><rect x="554" y="682" width="16" height="14"/>
+    <rect x="580" y="700" width="18" height="15"/><rect x="602" y="702" width="16" height="14"/>
+    <rect x="640" y="680" width="18" height="15"/><rect x="662" y="682" width="16" height="14"/>
+    <!-- Mid-ring fill between roads -->
+    <rect x="310" y="420" width="16" height="14"/><rect x="330" y="418" width="18" height="16"/>
+    <rect x="310" y="460" width="16" height="14"/><rect x="330" y="458" width="18" height="16"/>
+    <rect x="310" y="500" width="16" height="14"/><rect x="330" y="498" width="18" height="16"/>
+    <rect x="640" y="420" width="16" height="14"/><rect x="660" y="418" width="18" height="16"/>
+    <rect x="640" y="460" width="16" height="14"/><rect x="660" y="458" width="18" height="16"/>
+    <rect x="640" y="500" width="16" height="14"/><rect x="660" y="498" width="18" height="16"/>
+    <!-- Around crown market -->
+    <rect x="420" y="558" width="18" height="14"/><rect x="442" y="556" width="16" height="16"/>
+    <rect x="540" y="558" width="18" height="14"/><rect x="562" y="556" width="16" height="16"/>
+    <rect x="400" y="590" width="18" height="14"/><rect x="422" y="588" width="16" height="16"/>
+    <rect x="560" y="590" width="18" height="14"/><rect x="582" y="588" width="16" height="16"/>
+    <!-- Northwest corner fill -->
+    <rect x="260" y="220" width="18" height="14"/><rect x="282" y="218" width="16" height="16"/>
+    <rect x="260" y="260" width="18" height="14"/><rect x="282" y="258" width="16" height="16"/>
+    <!-- Northeast corner fill -->
+    <rect x="680" y="220" width="18" height="14"/><rect x="702" y="218" width="16" height="16"/>
+    <rect x="680" y="260" width="18" height="14"/><rect x="702" y="258" width="16" height="16"/>
+  </g>
+  <!-- ── LOCATION NUMBER MARKERS ── -->
+  <g font-family="Cinzel,Georgia,serif" font-weight="700">
+    <!-- 1: Queen's Gate -->
+    <g transform="translate(490,830)">
+      <circle r="13" fill="#3a2415" stroke="#f3e6c2" stroke-width="1.6"/>
+      <text font-size="13" fill="#f3e6c2" text-anchor="middle" y="4">1</text>
+    </g>
+    <!-- 2: Harvest Gate -->
+    <g transform="translate(490,78)">
+      <circle r="13" fill="#3a2415" stroke="#f3e6c2" stroke-width="1.6"/>
+      <text font-size="13" fill="#f3e6c2" text-anchor="middle" y="4">2</text>
+    </g>
+    <!-- 3: Government House -->
+    <g transform="translate(490,340)">
+      <circle r="13" fill="#3a2415" stroke="#f3e6c2" stroke-width="1.6"/>
+      <text font-size="13" fill="#f3e6c2" text-anchor="middle" y="4">3</text>
+    </g>
+    <!-- 4: Clockwork Cathedral -->
+    <g transform="translate(330,330)">
+      <circle r="13" fill="#3a2415" stroke="#f3e6c2" stroke-width="1.6"/>
+      <text font-size="13" fill="#f3e6c2" text-anchor="middle" y="4">4</text>
+    </g>
+    <!-- 5: Crown Market -->
+    <g transform="translate(490,490)">
+      <circle r="13" fill="#3a2415" stroke="#f3e6c2" stroke-width="1.6"/>
+      <text font-size="13" fill="#f3e6c2" text-anchor="middle" y="4">5</text>
+    </g>
+    <!-- 6: Old Yard -->
+    <g transform="translate(400,200)">
+      <circle r="13" fill="#3a2415" stroke="#f3e6c2" stroke-width="1.6"/>
+      <text font-size="13" fill="#f3e6c2" text-anchor="middle" y="4">6</text>
+    </g>
+    <!-- 7: City Watch Barracks -->
+    <g transform="translate(370,730)">
+      <circle r="13" fill="#3a2415" stroke="#f3e6c2" stroke-width="1.6"/>
+      <text font-size="13" fill="#f3e6c2" text-anchor="middle" y="4">7</text>
+    </g>
+    <!-- 8: Colorful Alley (subtle, small) -->
+    <g transform="translate(290,190)">
+      <circle r="10" fill="#4a3a5a" stroke="#c0a0e0" stroke-width="1.4" opacity="0.8"/>
+      <text font-size="11" fill="#e0c0f0" text-anchor="middle" y="4" opacity="0.8">8</text>
+    </g>
+  </g>
+
+  <!-- ── LOCATION LABELS ── -->
+  <g font-family="Cinzel,Georgia,serif" font-size="11" font-weight="700" letter-spacing="0.05em">
+    <g transform="translate(490,856)" text-anchor="middle"><rect x="-52" y="-13" width="104" height="16" rx="2" fill="#f3e6c2" opacity="0.88"/><text fill="#3a2415">Queen's Gate</text></g>
+    <g transform="translate(490,52)" text-anchor="middle"><rect x="-56" y="-13" width="112" height="16" rx="2" fill="#f3e6c2" opacity="0.88"/><text fill="#3a2415">Harvest Gate</text></g>
+    <g transform="translate(490,300)" text-anchor="middle"><rect x="-68" y="-13" width="136" height="16" rx="2" fill="#f3e6c2" opacity="0.88"/><text fill="#3a2415">Government House</text></g>
+    <g transform="translate(330,284)" text-anchor="middle"><rect x="-74" y="-13" width="148" height="16" rx="2" fill="#f3e6c2" opacity="0.88"/><text fill="#3a2415">Clockwork Cathedral</text></g>
+    <g transform="translate(490,548)" text-anchor="middle"><rect x="-56" y="-13" width="112" height="16" rx="2" fill="#f3e6c2" opacity="0.88"/><text fill="#3a2415">Crown Market</text></g>
+    <g transform="translate(400,226)" text-anchor="middle"><rect x="-44" y="-13" width="88" height="16" rx="2" fill="#f3e6c2" opacity="0.88"/><text fill="#3a2415">The Old Yard</text></g>
+    <g transform="translate(370,776)" text-anchor="middle"><rect x="-66" y="-13" width="132" height="16" rx="2" fill="#f3e6c2" opacity="0.88"/><text fill="#3a2415">Watch Barracks</text></g>
+    <g transform="translate(290,160)" text-anchor="middle"><rect x="-52" y="-13" width="104" height="16" rx="2" fill="#e8d0f8" opacity="0.75"/><text fill="#5a3a7a">Colorful Alley</text></g>
+  </g>
+
+  <!-- ── COMPASS ── -->
+  <g transform="translate(900,80)">
+    <circle r="40" fill="#f3e6c2" stroke="#3a2415" stroke-width="1.2"/>
+    <circle r="34" fill="none" stroke="#5a3a22" stroke-width="0.6"/>
+    <circle r="3" fill="#3a2415"/>
+    <g stroke="#3a2415" stroke-width="1.2" fill="#3a2415">
+      <path d="M0 -36 L4 -5 L-4 -5 Z"/>
+      <path d="M0 36 L-4 5 L4 5 Z" opacity="0.85"/>
+      <path d="M36 0 L5 -4 L5 4 Z" opacity="0.85"/>
+      <path d="M-36 0 L-5 4 L-5 -4 Z" opacity="0.85"/>
+    </g>
+    <text font-family="Palatino,Georgia,serif" font-weight="700" font-size="12" text-anchor="middle" y="-20" fill="#3a2415">N</text>
+  </g>
+
+  <!-- Title -->
+  <g transform="translate(50,50)">
+    <rect x="-10" y="-28" width="200" height="44" rx="3" fill="#3a2415" opacity="0.85"/>
+    <text font-family="Cinzel,Georgia,serif" font-size="18" font-weight="700" letter-spacing="0.2em" fill="#f3e6c2" y="0">OLD CORE</text>
+    <text font-family="Palatino,Georgia,serif" font-size="11" font-style="italic" fill="#b89766" y="14">the original city</text>
+  </g>
+</svg>`
+};
+
+// District-specific location data
+const DISTRICT_LOCATION_DATA = {
+  'highmarket': { locations: HIGHMARKET_LOCATIONS },
+  'old-core': {
+    locations: [
+      { id:'oc-1', name:"Queen's Gate", svgX:490, svgY:830, tag:"Infrastructure", tagClass:"tag-infrastructure",
+        desc:"You hear it before you see it. Not the gate itself, but the guards -- the particular sound of ceremonial armor polished past the point of practicality, and the practiced rhythm of two men performing the same choreography for long enough they could do it in their sleep, and occasionally do. Queen's Gate faces south, toward Thrane, toward the border that was a front line not so many years ago. The gate is built to look like it could hold against an army. It could not hold against a determined cart with a good run-up, but that is beside the point. The point is the brass sun of Aundair worked into the stonework above the arch, and the impression of a city that knows who it is and where it came from.",
+        details:[
+          {l:"Status",v:"Ceremonially manned. Two guards in polished breastplates, more performance than defense."},
+          {l:"The stonework",v:"Bears the marks of the Last War if you know where to look -- a patched section of wall to the east, a crack in the left pillar filled in but never quite gone."},
+          {l:"Significance",v:"Main southern entry into Old Core. The primary defensive position during the Last War. Older merchants remember when it meant something serious."},
+        ],
+        gmDetails:[], gm:"The patched wall and the pillar crack are conversation starters with older residents who remember the war. Anyone asking about them gets a real answer about what this city has been through." },
+      { id:'oc-2', name:"Harvest Gate", svgX:490, svgY:78, tag:"Infrastructure", tagClass:"tag-infrastructure",
+        desc:"Harvest Gate faces north and has never, in living memory, been involved in anything dramatic. This is considered a point in its favor. The farmers come through before dawn, when the gate guards are at their least ceremonial and most practical, and there is a tacit understanding that the performance is for later in the day when the city is properly awake. In the early hours, Harvest Gate is just a gate -- heavy wood and old iron and the familiar complaint of hinges that someone has been meaning to oil since before the Last War.",
+        details:[
+          {l:"Status",v:"Ceremonially manned, though the early morning shift is considerably more relaxed about it."},
+          {l:"The arch",v:"Carved wheat sheaves worn soft by weather and time. Fresh flowers appear at the base on harvest festivals and stay until they crumble."},
+          {l:"The notch",v:"A cut in the right pillar at knee height that farmers use to measure wagon wheel clearance before entering. Nobody put it there officially. It appeared roughly thirty years ago and has been used every market morning since."},
+        ],
+        gmDetails:[], gm:"The notch is a nice detail to mention when the party first passes through -- it rewards players who pay attention to their environment and says something true about how this city actually works versus how it officially works." },
+      { id:'oc-3', name:"Government House", svgX:490, svgY:340, tag:"Civic", tagClass:"tag-civic",
+        desc:"See main city entry.", details:[], gmDetails:[], gm:"", linkedLocation:1 },
+      { id:'oc-4', name:"Clockwork Cathedral", svgX:330, svgY:330, tag:"Religious", tagClass:"tag-religious",
+        desc:"See main city entry.", details:[], gmDetails:[], gm:"", linkedLocation:3 },
+      { id:'oc-5', name:"Crown Market", svgX:490, svgY:490, tag:"Commerce", tagClass:"tag-commerce",
+        desc:"See main city entry.", details:[], gmDetails:[], gm:"", linkedLocation:2 },
+      { id:'oc-6', name:"The Old Yard", svgX:400, svgY:200, tag:"Commerce", tagClass:"tag-commerce",
+        desc:"The first thing you notice is the smell. Turned earth tracked in on wagon wheels. Woodsmoke from Bresla's bread oven, burning since before the Chimes rang their first hour. The livestock pens on the eastern edge, because someone is always trying to sell an ox before it becomes someone else's problem. And underneath all of it, the cold-water smell of the ancient well at the center of the square. The Old Yard has been here longer than the wall, longer than the cathedral, longer than anyone has been keeping track. The gate was named for this market. Everything else grew around it.",
+        details:[
+          {l:"The Well",v:"The oldest structure in Old Core, fed by an underground spring predating the city. The names of the Sovereign Host are carved around its rim, worn nearly smooth. Open from before dawn until well after dusk."},
+          {l:"What's sold",v:"Iron nails and leather cord. Cabbages and river fish. Rough-spun wool, wheel-grease, tool handles, candles. What the city actually needs, not what adventurers want."},
+          {l:"Bresla's Oven",v:"A fixture of the Yard since before most residents can remember. She sets up before dawn and sells until the last loaf is gone."},
+          {l:"Dara's Stall",v:"An old woman who sells dried herbs from a basket near the well. Claims remedies for ailments no physician has heard of. Annoyingly, they work."},
+          {l:"The Knife-Sharpener",v:"Sets up near the well every morning without fail. His grinding stone has a rhythm you start hearing in your sleep after a few days in Marketplace."},
+        ],
+        gmDetails:[
+          {l:"What they've noticed",v:"Supply shipments running late in ways that don't match the excuses given. Watch thinner near the south gate at certain hours. New faces asking questions like they're shopping but never buying. The patterns are wrong and the Yard's merchants have been reading patterns for generations."},
+        ],
+        gm:"The Old Yard is the best place in the city to pick up unfiltered local intelligence. The merchants here don't have agendas -- they just notice things. If the party spends time here and asks the right questions, they can learn things the Crown Market crowd and the Watch would never tell them. Dara in particular knows more than she lets on.",
+        characters: ["dara", "bresla", "markat", "bill", "bob"] },
+      { id:'oc-7', name:"City Watch Barracks", svgX:370, svgY:730, tag:"Civic", tagClass:"tag-civic",
+        desc:"The building does not pretend to be anything other than what it is. It was a military barracks during the Last War, it is a city watch barracks now, and the transition between the two involved mostly a change of paperwork and a new coat of paint on the sign out front, which has since faded. The bones of the place are military -- thick walls, small windows, a layout designed for quick mobilization rather than comfort. Someone at some point made an effort to domesticate it. There are flower boxes on two of the windows, which Riven Karst has never acknowledged and never removed. A cork board near the entrance is covered in notices about market disputes, missing livestock, and one extremely detailed wanted sketch of a chicken that has been escaping from the same coop on Threadneedle Street for three months running. The chicken remains at large.",
+        details:[
+          {l:"Commander",v:"Marshal Riven Karst"},
+          {l:"History",v:"Former military barracks, converted post-war for City Watch use. The positioning near Queen's Gate was military logic that continues to make practical sense."},
+          {l:"The kitchen",v:"A bowl of stew always seems to be available. There is an unofficial understanding that Yard vendors who have had trouble can come here -- not for arrests, just for someone who will listen."},
+          {l:"The wall",v:"Near the duty desk, a long list of names carved into the stone. Not officially sanctioned, never painted over. The oldest names are soldiers from the Last War. Riven's name is not on it. He has never explained why."},
+        ],
+        gmDetails:[
+          {l:"Ledger", v:"The Silver Hearth Orphanage funds are quietly routed through the Watch supply budget. Doesn't quite add up if anyone looks closely -- but it's generosity, not corruption."},
+        ],
+        gm:"Riven's base of operations. The wall of names is a good atmospheric detail and a potential hook -- a player who looks closely might notice a name that means something, or notice the absence of Riven's. The chicken wanted poster is comic relief and can stay exactly as absurd as it is.",
+        characters: ["riven", "bill", "bob"] },
+      { id:'oc-8', name:"Colorful Alley", svgX:290, svgY:190, tag:"Mysterious", tagClass:"tag-mysterious",
+        desc:"A narrow alley tucked against the north wall that most residents walk past without noticing. The colors here are simply... more. Too saturated. Too vivid. Shadows sometimes move against the light. And at noon on odd days, a shop appears that wasn't there before.",
+        details:[{l:"The Shop",v:"Zilvra Tinkwhistle's sentient extradimensional shop. Teleports between realities. Runs on memories as fuel. Appears at noon on odd days."},{l:"Warning",v:"Colors are FADING. Shadows 'licking the walls'. The planar boundary is thinning."}],
+        gmDetails:[],
+        gm:"The shop holds the Key to Unseen Doors. Zilvra doesn't know it exists; the shop itself offers it. Kaelis visited and failed a riddle. The Pale Cat has an 'in' with Zilvra but hasn't followed up. Potential loop resource." },
+    ]
+  }
+};
+
 // Locations that only appear in district maps, not the city overview
 const DISTRICT_LOCATIONS = {
   'colorful-alley': {
@@ -1750,7 +2625,7 @@ const CHARACTERS = {
     name: "Alden Voss",
     role: "Port Overseer · Lightning Rail Station",
     location: 6,
-    tags: [{label:"Infrastructure", cls:"tag-infrastructure"}, {label:"Clean", cls:"tag-clean"}],
+    tags: [{label:"Infrastructure", cls:"tag-infrastructure"}, {label:"Clean", cls:"tag-clean", gmOnly:true}],
     icon: "⚓",
     desc: "A balding, red-faced bureaucrat who chain-eats peppermints to calm his nerves. Port Overseer at the Lightning Rail Station, he's under constant pressure from the Governor to open the port 'yesterday.' His office is littered with half-built model airships and a framed portrait of his cat, Lord Whiskers.",
     details: [
@@ -1846,7 +2721,7 @@ const CHARACTERS = {
     role: "Governor",
     location: 1,
     tags: [{label:"Civic", cls:"tag-civic"}],
-    gmTags: [{label:"Clean", cls:"tag-clean"}],
+    gmTags: [{label:"Clean", cls:"tag-clean", gmOnly:true}],
     icon: "👑",
     desc: "War hero and Queen's appointed steward of Marketplace. Lost his arm at the Battle of Cairn Hill — replaced with a Cannith prosthetic. Pragmatic and loyal, with a genuine investment in the city's growth. Wife Lady Eliana (priestess of Boldrei), daughter Lila (age 12, budding artificer).",
     details: [
@@ -1909,6 +2784,394 @@ const CHARACTERS = {
     gmDetails: [],
     gm: "Genuinely neutral — not aligned with any faction. The shop itself (not Zilvra) holds the Key to Unseen Doors and offers it independently. Kaelis tried to obtain it and failed a riddle. The Pale Cat has established rapport but hasn't followed up. Key loop resource if the party pursues it.",
   },
+  nio: {
+    portrait: "https://assets.forge-vtt.com/5fca6d4f8fe4585045207db9/worlds/Queens%20Ravens/Chapter%202/Twilight%20Tavern/Nio%20Kahn.jpg",
+    name: "Nio Khan",
+    role: "Owner · The Twilight Tavern",
+    location: null,
+    tags: [{label:"Royal Eyes", cls:"tag-infrastructure"}],
+    icon: "🎭",
+    desc: "A human man who tends to hide his face behind a mask most of the time. When asked, there are many reasons for wearing it. The truth can be found in what happened during the Last War. He is shrewd, occasionally off-putting, and has a quality of stillness that suggests someone who has seen a great deal and stopped being surprised by most of it. He has been an operative of the Royal Eyes for decades but has largely stepped back from active work. The Twilight Tavern is his retirement -- which is to say, a Royal Eyes safe house he runs because old habits do not actually die.",
+    details: [
+      {l:"Cover", v:"Proprietor of the Twilight Tavern. Genuinely runs it as a tavern. Mostly leaves day-to-day operations to his staff."},
+      {l:"The mask", v:"Worn consistently. Many explanations offered. None of them the true one."},
+      {l:"Status", v:"Semi-retired. Still connected. Still watching."},
+    ],
+    gmDetails: [
+      {l:"Background", v:"Royal Eyes veteran, decades of service. The Last War left marks that go beyond the mask. Pulled back from active operations but maintains the Twilight Tavern as a functioning cell safe house."},
+      {l:"Refer to staff", v:"For most operational matters he defers to Boldar and Lia. He involves himself when something is serious enough to require his attention, which means it is very serious indeed."},
+    ],
+    gm: "Nio is a resource of last resort -- the party can bring him things that are too big for Boldar or Lia to handle. He will not be warm about it. He will be effective. The mask and its story are a long-term hook if the party ever earns enough trust to ask the right question.",
+  },
+  boldar: {
+    portrait: "https://assets.forge-vtt.com/5fca6d4f8fe4585045207db9/worlds/Queens%20Ravens/Chapter%202/Twilight%20Tavern/Boldar.png",
+    name: "Boldar",
+    role: "Chef & Operative · The Twilight Tavern",
+    location: null,
+    tags: [{label:"Royal Eyes", cls:"tag-infrastructure"}],
+    icon: "🔪",
+    desc: "A half-orc who works as the Twilight Tavern's chef and butcher -- a cover that suits him better than most, because the food is genuinely excellent and nobody looks twice at a large man with a cleaver. Active Royal Eyes operative. Knows more of Marketplace's smuggling networks than most people would be comfortable with.",
+    details: [
+      {l:"Cover", v:"Chef and butcher. The food is legitimately good. This is not an accident -- good food keeps regulars, and regulars mean information."},
+      {l:"Contacts", v:"Extensive connections across Marketplace's smuggling and black market networks. Can source things, move things, make things quietly disappear."},
+      {l:"Role", v:"Fixer. If the party needs something handled that cannot go through official channels, Boldar is the conversation to have."},
+    ],
+    gmDetails: [
+      {l:"The big contact", v:"The largest smuggling ring he has ties to is connected to something significantly larger than routine contraband. Thread not yet pursued. Worth developing when relevant."},
+      {l:"Works with Lia", v:"Handles the physical and logistical side of operations while Lia covers the magical and technical. They have worked together long enough to function without much conversation."},
+    ],
+    gm: "Boldar is the party's most practical resource at the Twilight Tavern -- he can get things done. His smuggler contacts are a potential plot thread when you need one. The thing he knows about the biggest ring is a card to play when the timing is right.",
+  },
+  lia: {
+    portrait: "https://assets.forge-vtt.com/5fca6d4f8fe4585045207db9/worlds/Queens%20Ravens/Chapter%202/Twilight%20Tavern/Lia%20ir%27Lamar.png",
+    name: "Lia ir'Lamar",
+    role: "Operative · The Twilight Tavern",
+    location: null,
+    tags: [{label:"Royal Eyes", cls:"tag-infrastructure"}],
+    icon: "✨",
+    desc: "The operative most likely to be behind the bar when you walk in, apparently happy to discuss entirely ordinary things while conducting three other conversations simultaneously through entirely different channels. Magical equipment specialist. Wears a large witch's hat and round glasses that make her look approachable and slightly chaotic, which is more or less the point. Her personal popularity with the Twilight Tavern's regulars means she has a constant stream of recent information about everything happening in Highmarket Reach and beyond.",
+    details: [
+      {l:"Cover", v:"Bar staff. Friendly, charming, easy to talk to. Regulars adore her. This is professionally useful and also, genuinely, just who she is."},
+      {l:"Speciality", v:"Magical equipment, technical support for operations, arcane analysis."},
+      {l:"Information", v:"Her popularity means people tell her things. Constantly. She remembers all of it."},
+    ],
+    gmDetails: [
+      {l:"Background", v:"Extensive education in classified fields. Functions as the cell's magical and technical specialist. Works alongside Boldar on operations requiring both physical and arcane components."},
+      {l:"The coded conversations", v:"Many of her regular patron interactions are coded exchanges. The party may have had conversations with her before realising this. She would not have corrected them."},
+    ],
+    gm: "Lia is the party's most accessible Twilight Tavern contact -- she is pleasant, she is present, and she appears safe. She is not unsafe, but she is considerably more capable than she presents. Best information source in Highmarket Reach. If the party needs a magical resource or technical analysis, she is the first call.",
+  },
+    aldric: {
+    name: "Aldric Kundarak",
+    role: "Branch Director · House Kundarak Enclave",
+    location: null,
+    tags: [{label:"House Kundarak", cls:"tag-industrial"}],
+    icon: "🏦",
+    desc: "A dwarf who has directed the Marketplace branch of House Kundarak for eleven years and shows no signs of ambition toward anywhere else. He has the particular stillness of someone who has spent a career surrounded by other people's secrets and learned that the most important thing you can do with a secret is nothing. He is courteous, unhurried, and communicates primarily in the implication that whatever you are about to ask him, the answer will be no. He is usually right. He has also, on three separate occasions, quietly warned clients of financial arrangements that were about to go badly wrong for them, which is not technically his job but which has earned him a loyalty among certain Marketplace merchants that money cannot buy.",
+    details: [
+      {l:"Role", v:"Branch director. Full Kundarak bloodline, Mark of Warding."},
+      {l:"Manner", v:"Courteous, unhurried, communicates primarily in implication. The answer is usually no, delivered pleasantly."},
+      {l:"Reputation", v:"Has quietly warned clients of bad deals on three occasions. Not his job. Has not explained why he did it."},
+      {l:"Tenure", v:"Eleven years in Marketplace. Has been offered promotions to larger branches twice. Declined both."},
+    ],
+    gmDetails: [
+      {l:"Why he stays", v:"Marketplace is growing into something significant and Aldric knows it. He wants to be here when it does. He is also aware of unusual financial patterns in the city that he has not yet connected to the cult activity -- large movements, strange timing, clients who should not have as much money as they do."},
+      {l:"Leverage potential", v:"Has more financial intelligence on Marketplace's power players than anyone except possibly Kessa at the Gold Dragon Inn. Will not share it without extraordinary justification. 'The safety of the city' is the kind of justification he would consider."},
+    ],
+    gm: "Aldric is a slow-burn resource. He is not going to help the party casually, but he is also not indifferent to what happens to Marketplace. If the party can demonstrate that they are working against something genuinely threatening the city -- not just solving their own problems -- he will find ways to be useful within what he considers acceptable. The three warnings he gave to clients are a hook: one of those clients is now in a position to owe him, and by extension the party, a significant favor.",
+  },
+  vera: {
+    name: "Vera",
+    role: "Senior Vault Keeper · House Kundarak Enclave",
+    location: null,
+    tags: [{label:"House Kundarak", cls:"tag-industrial"}],
+    icon: "🗝️",
+    desc: "A human woman who manages the physical vault operations with the focused attention of someone who treats every lock as a personal responsibility. Not Kundarak bloodline -- she came to the enclave as a locksmith's apprentice at seventeen, demonstrated a facility with warding magic that Aldric spotted immediately, and has been here for fourteen years since. She knows every vault, every access protocol, and every client by their vault number before she knows their name. She is not unfriendly. She is simply very busy, always, and does not see why that should change.",
+    details: [
+      {l:"Role", v:"Senior vault keeper. Non-bloodline, fourteen years service. Manages all physical vault operations."},
+      {l:"Background", v:"Came as a locksmith's apprentice at seventeen. Aldric recruited her for warding work. Never left."},
+      {l:"Manner", v:"Focused, efficient, not unfriendly but perpetually occupied. Remembers vault numbers before names."},
+      {l:"Skills", v:"Exceptional with locks, wards, and containment magic. Better than several bloodline members Aldric has worked with."},
+    ],
+    gmDetails: [
+      {l:"What she knows", v:"Every unusual vault access in the past year. Three clients have accessed their vaults at times and intervals that form a pattern she noticed three months ago and mentioned to Aldric. He told her to log it and say nothing. She has been logging it."},
+      {l:"The log", v:"A private record, separate from official documentation. She kept it because the pattern felt wrong and she was not willing to simply ignore wrong. It contains dates, times, and vault numbers. The party getting access to it would be significant."},
+    ],
+    gm: "Vera is the practical key to the Kundarak intelligence thread. Aldric has the broad financial picture; Vera has the specific operational detail. She is more likely than Aldric to share what she knows if approached correctly -- she kept the log because something felt wrong, and someone taking it seriously would be a relief. She would need to believe the party is trustworthy before risking her position.",
+  },
+  jorik: {
+    name: "Jorik",
+    role: "Door Warden · House Kundarak Enclave",
+    location: null,
+    tags: [{label:"House Kundarak", cls:"tag-industrial"}],
+    icon: "🛡️",
+    desc: "A dwarf who stands at the Kundarak enclave's entrance and has, in seven years, never once let through anyone who should not have been let through. This is his entire professional identity and he is completely at peace with it. He is built like a small wall, carries more weapons than his clothing suggests, and has the quality of attention of someone who is always, always working. He is not rude. He is not aggressive. He simply makes it very clear, through presence alone, that this door is not a door you pass through by accident.",
+    details: [
+      {l:"Role", v:"Door warden. Seven years on this door. No security incident in that time."},
+      {l:"Manner", v:"Not rude. Not aggressive. Simply immovable. His presence communicates the point without words."},
+      {l:"The weapons", v:"Carries significantly more than his clothing suggests. This is known. Nobody has tested it."},
+      {l:"Off duty", v:"Drinks at the Twilight Tavern on his evenings off. Orders the same thing every time. Talks to nobody. Leaves exactly when he said he would."},
+    ],
+    gmDetails: [
+      {l:"The Twilight Tavern visits", v:"Jorik drinks at the Twilight Tavern twice a week. Lia ir'Lamar knows exactly who he is and has never approached him -- a Kundarak door warden as a contact is too sensitive to risk on a casual approach. She watches him instead. He may have noticed."},
+      {l:"What he sees", v:"Every face that approaches the Kundarak door. Has seen several clients he did not recognize -- sent in by appointment, valid credentials, something slightly off about them he could not name. He noted them in a private record he keeps out of professional habit."},
+    ],
+    gm: "Jorik is a small thread with potential. His Twilight Tavern visits create an indirect connection to the Royal Eyes cell that neither side has acted on. His private record of unusual clients overlaps with Vera's vault access log -- together they form a more complete picture than either alone. A party clever enough to connect both would have something substantial.",
+  },
+    corvyn: {
+    name: "Corvyn Vadalis",
+    role: "Manager · The Gilded Menagerie",
+    location: null,
+    tags: [{label:"House Vadalis", cls:"tag-industrial"}, {label:"Clean", cls:"tag-clean", gmOnly:true}],
+    icon: "🐾",
+    desc: "A human man in his late thirties who manages the Gilded Menagerie with absolute competence in every area that does not involve other people. Around the animals he is transformed -- unhurried, precise, speaking in a low continuous murmur that the creatures respond to before he has finished the sentence. Around customers he is technically present. He answers questions accurately and at unusual length, makes direct eye contact for slightly too long, and has never once successfully read the signal that someone wants to end a conversation. He does not mean anything by it. He simply does not notice.",
+    details: [
+      {l:"Role", v:"Menagerie manager. Vadalis bloodline, full Mark of Handling."},
+      {l:"With animals", v:"Extraordinary. The moonlit panther follows him like a dog. The crystal-winged sprite lands on his shoulder unprompted. The containment fields barely need maintaining when he is present."},
+      {l:"With people", v:"Technically functional. Answers questions accurately and at length. Has never successfully detected that someone wants to leave a conversation."},
+      {l:"Staff", v:"Trusts his team completely and delegates the business side to the twins entirely. His focus is the animals."},
+    ],
+    gmDetails: [
+      {l:"Status", v:"Clean. Genuinely has no involvement in or knowledge of the smuggling thread. The twins have been careful to keep it that way -- a suspicious manager would be bad for business."},
+      {l:"Hook", v:"Has recently noticed that several animals in the collection seem subtly distressed in ways he cannot explain medically. His Mark tells him something is wrong. He does not know what. The distress correlates with certain delivery days."},
+    ],
+    gm: "Corvyn is an unlikely but potentially valuable ally -- his Mark of Handling is genuinely powerful, and his obliviousness to social dynamics means he will answer questions with complete honesty without any of the usual hedging. He is also the key to unraveling the smuggling thread if the party connects his animal distress observations to the delivery schedule.",
+  },
+  aven_vadalis: {
+    name: "Aven Vadalis",
+    role: "Sales & Client Relations · The Gilded Menagerie",
+    location: null,
+    tags: [{label:"House Vadalis", cls:"tag-industrial"}],
+    gmTags: [{label:"Smuggling", cls:"tag-cult"}],
+    icon: "💎",
+    desc: "One half of the twins who run the Gilded Menagerie's client-facing operations. Aven handles the floor -- the initial impression, the guided tour, the careful reading of what a client actually wants versus what they think they want. He is warm, unhurried, and has a quality of attention that makes people feel genuinely seen rather than merely assessed. Clients regularly spend more than they planned to. They leave feeling good about it.",
+    details: [
+      {l:"Role", v:"Client relations, floor sales, first impressions. Always present when Sela is not."},
+      {l:"Manner", v:"Warm, attentive, quietly persuasive. The kind of charm that doesn't feel like charm until you're already sold."},
+      {l:"The twin thing", v:"He and Sela have an arrangement: one is always on the floor. They trade off seamlessly, sometimes mid-conversation, and most clients never notice the switch."},
+    ],
+    gmDetails: [
+      {l:"Smuggling role", v:"Handles the client side of the operation -- identifies which buyers might be receptive to 'special commissions' beyond the standard stock, vets them carefully, makes the initial approach. Deniable, charming, practiced."},
+      {l:"The switch", v:"He and Sela occasionally use the identical twin angle deliberately for the smuggling side -- one can establish an alibi while the other handles a delivery. They find this funnier than they should."},
+    ],
+    gm: "Aven is harder to crack than he looks. The charm is real but so is the discipline underneath it -- he has been doing this long enough to be genuinely good at not being caught. If the party suspects him specifically, he will be pleasant, cooperative, and completely uninformative.",
+  },
+  sela_vadalis: {
+    name: "Sela Vadalis",
+    role: "Acquisitions & Negotiations · The Gilded Menagerie",
+    location: null,
+    tags: [{label:"House Vadalis", cls:"tag-industrial"}],
+    gmTags: [{label:"Smuggling", cls:"tag-cult"}],
+    icon: "💎",
+    desc: "The other half. Where Aven works the floor, Sela handles acquisitions -- sourcing new stock, negotiating with suppliers, managing the relationships that keep the Menagerie's collection exceptional. She is slightly sharper than her brother in conversation, slightly less patient, and considerably more likely to end a negotiation when she has what she wants rather than staying for the pleasantries. Clients who meet both twins in the same visit occasionally get the unsettling feeling they have been talking to the same person twice.",
+    details: [
+      {l:"Role", v:"Acquisitions, supplier relations, stock management. Handles everything that happens before an animal reaches the floor."},
+      {l:"Manner", v:"Precise, warm when it serves, direct when it doesn't. Gets to the point faster than Aven. Leaves when she has what she came for."},
+      {l:"The twin thing", v:"Identical to Aven in appearance. They use this. Clients who meet both in one visit sometimes feel briefly unmoored. The twins consider this a bonus."},
+    ],
+    gmDetails: [
+      {l:"Smuggling role", v:"Manages the supply side of the operation -- the suppliers who provide 'special stock' alongside legitimate acquisitions, the logistics of keeping it moving, the paperwork that makes it look like something else. The Vadalis smuggling ring runs through her supplier contacts."},
+      {l:"The Alchemical Quarter link", v:"Several of her suppliers have connections to Cannith Works. The creatures imported for cult experiments come through this chain. She knows they are going somewhere unusual but has not asked what happens to them. Plausible deniability is worth more than curiosity."},
+    ],
+    gm: "Sela is the operational heart of the smuggling ring -- if the party pulls the thread, it leads to her supplier network. She is harder to like than Aven (though not unlikeable) and harder to fool. The Alchemical Quarter link is the connection to the larger cult plot.",
+  },
+  tomas: {
+    name: "Tomas",
+    role: "Assistant Handler · The Gilded Menagerie",
+    location: null,
+    tags: [{label:"House Vadalis", cls:"tag-industrial"}],
+    gmTags: [{label:"Smuggling", cls:"tag-cult"}],
+    icon: "🦎",
+    desc: "A wiry gnome who assists Corvyn with the day-to-day care of the Menagerie's collection. Good with his hands, patient with difficult animals, and almost entirely invisible to most visitors, who tend to look past the small man in the work apron when there are moonlit panthers to look at. He has worked at the Gilded Menagerie for four years. Corvyn thinks he is excellent. He is excellent.",
+    details: [
+      {l:"Role", v:"Assistant handler. Feeds, grooms, maintains habitats, assists with containment field adjustments."},
+      {l:"Manner", v:"Quiet and practical. Good with animals. Easy to overlook, which he finds professionally useful."},
+      {l:"With Corvyn", v:"Genuinely respects him and works well alongside him. Has been here longer than any other non-bloodline staff."},
+    ],
+    gmDetails: [
+      {l:"Smuggling role", v:"Handles the physical side of the special deliveries -- loading, unloading, making sure the living cargo arrives in condition. Also the one who manages the paperwork discrepancies that keep the shipments from looking like what they are. The twins trust him because he has never given them a reason not to."},
+      {l:"The guilt", v:"He likes Corvyn. He knows what would happen to Corvyn's operation if the smuggling came to light. He has compartmentalized this successfully for four years and is starting to find it harder."},
+    ],
+    gm: "Tomas is the weak link -- not because he is incompetent, but because the guilt is real and accumulating. The party catching him in a quiet moment, away from the twins, and approaching with understanding rather than accusation could flip him. He knows everything about the physical operation. He does not know what happens to the creatures after delivery, and part of him does not want to.",
+  },
+    mira: {
+    name: "Mira Ghallanda",
+    role: "Inn Manager · Gold Dragon Inn",
+    location: null,
+    tags: [{label:"House Ghallanda", cls:"tag-commerce"}, {label:"Clean", cls:"tag-clean", gmOnly:true}],
+    icon: "🏨",
+    desc: "A halfling woman in her mid-forties who has managed Gold Dragon Inns in four cities before Marketplace and will probably manage four more before she retires. She wears the Ghallanda seal on a chain around her neck and treats it with the quiet reverence of someone who actually believes in what it represents. Marketplace is her biggest posting yet -- the growth figures made it worth sending someone good -- and she is determined to justify the assignment. She is warm, precise, and has the particular quality of attention that makes every guest feel like the most important person in the room, which is a skill and not an accident.",
+    details: [
+      {l:"Role", v:"Franchise manager. Full Ghallanda bloodline, dragonmark of hospitality."},
+      {l:"Manner", v:"Warm but efficient. Remembers every guest's name, order, and preference after one visit."},
+      {l:"Pride", v:"The Ghallanda guarantee is not a slogan to her. It is a professional standard she takes personally."},
+      {l:"Posting", v:"Fourth city. Marketplace is her most significant assignment. She earned it."},
+    ],
+    gmDetails: [
+      {l:"Intelligence value", v:"Knows everything that happens inside her inn and a surprising amount about what happens outside it. Will not share guest information -- the guarantee covers discretion. Can be a useful ally if the party earns genuine trust."},
+      {l:"Hook", v:"Has noticed that certain guests who arrive with Phiarlan entertainment bookings seem more interested in other guests than in performing. Has not acted on this yet. Waiting to be sure."},
+    ],
+    gm: "Mira is a potential long-term ally -- genuinely principled, genuinely capable, and in a position to hear things from travelers that nobody else in the city hears. Getting her trust requires demonstrating that you respect the same things she does. Breaking her trust would be a serious mistake.",
+  },
+  pip_ghallanda: {
+    name: "Pip Ghallanda",
+    role: "Innkeeper-in-Training · Gold Dragon Inn",
+    location: null,
+    tags: [{label:"House Ghallanda", cls:"tag-commerce"}],
+    icon: "🌱",
+    desc: "Mira's nephew, twenty-two years old, theoretically here to learn the family trade. In practice here because his parents decided he needed structure and Mira was the only family member who could give it to him without being too soft about it. He is not bad at the work -- he has the dragonmark, he has the instinct for hospitality -- but he is visibly wrestling with whether this is actually what he wants his life to be, which is not a question that typically occurs to Ghallanda heirs until much later, if at all. He is quick with a joke, slow with the morning inventory, and has developed an unfortunate habit of spending his evenings at the Twilight Tavern.",
+    details: [
+      {l:"Role", v:"Apprentice manager. Ghallanda bloodline, developing dragonmark."},
+      {l:"Manner", v:"Charming, slightly scattered, funnier than he has any professional right to be."},
+      {l:"The problem", v:"Not sure he wants to run inns for the rest of his life. Has not told Mira this yet."},
+      {l:"The habit", v:"Spends most evenings at the Twilight Tavern. Mira disapproves. He goes anyway."},
+    ],
+    gmDetails: [
+      {l:"The Twilight Tavern connection", v:"Pip has become a genuine regular and has an obvious crush on Lia ir'Lamar, who is professionally warm to him and quietly collects every piece of information he lets slip about Gold Dragon Inn guests. He does not know this. He has told her quite a lot."},
+      {l:"Hook", v:"Could be a useful information bridge between the two establishments -- deliberately or accidentally. Also a potential weak point if anyone wants leverage over Mira."},
+    ],
+    gm: "Pip is played for warmth rather than comedy -- he is genuinely likeable and genuinely lost. His Twilight Tavern visits are the most interesting thread: Lia has been cultivating him carefully, and the party learning this could go several ways depending on how they feel about it.",
+  },
+  serath: {
+    name: "Serath",
+    role: "House Phiarlan Performer · Gold Dragon Inn",
+    location: null,
+    tags: [{label:"House Phiarlan", cls:"tag-mysterious"}],
+    icon: "🎭",
+    desc: "An elf who performs most evenings in the Gold Dragon Inn's common room -- songs, illusion work, the occasional dramatic monologue. Technically a House Phiarlan guild-licensed entertainer. Introduces himself simply as Serath, which is either a performance name or a real name and he sees no reason to clarify. He is exceptionally good at what he does, which is the first thing people notice. The second thing they notice, usually later, is how much of the conversation he directed without appearing to direct any of it.",
+    details: [
+      {l:"Cover", v:"House Phiarlan entertainer. Songs, illusion magic, storytelling. Legitimately talented."},
+      {l:"Manner", v:"Warm stage presence, measured offstage. Asks more questions than he answers."},
+      {l:"Known for", v:"A recurring piece called 'The Cartographer's Lament' that guests request specifically. Nobody is sure where he learned it."},
+    ],
+    gmDetails: [
+      {l:"True role", v:"Active Phiarlan intelligence operative. The performances are real and so is the cover -- but he is here to monitor the flow of people and information through one of Marketplace's main traveler hubs."},
+      {l:"Current interest", v:"Has noticed unusual patterns in certain merchant arrivals -- coordinated timing, coded luggage markings. Has not yet connected them to the cult activity but is getting close."},
+      {l:"Mira", v:"She suspects he is more than an entertainer. He knows she suspects. Neither has addressed it directly. A professional standoff conducted entirely in politeness."},
+    ],
+    gm: "Serath is an independent intelligence thread who could become an ally, a complication, or both. He and the Twilight Tavern operatives are aware of each other's existence in the vague way that intelligence professionals in the same city tend to be, but have no formal relationship. If the party brokers a connection between them, interesting things happen.",
+  },
+  kessa: {
+    name: "Kessa",
+    role: "Head of Floor Staff · Gold Dragon Inn",
+    location: null,
+    tags: [{label:"House Ghallanda", cls:"tag-commerce"}, {label:"Clean", cls:"tag-clean", gmOnly:true}],
+    icon: "🗝️",
+    desc: "A human woman who has worked for House Ghallanda for twenty-three years and is not a bloodline member and does not care. She started as a chambermaid in a Gold Dragon Inn in Wroat at nineteen, worked her way up through every position the inn has to offer, and now runs the floor staff with the calm authority of someone who has genuinely seen everything. She knows where everything in the building is. She knows every current guest by name, room number, and checkout date. She almost certainly knows things about those guests that the guests themselves would prefer she didn't.",
+    details: [
+      {l:"Role", v:"Head of floor staff. Non-bloodline House Ghallanda employee, twenty-three years service."},
+      {l:"Manner", v:"Calm, competent, economical with words. The staff are slightly afraid of her in the way that people are afraid of someone who is always right."},
+      {l:"The keys", v:"Carries a master key ring. Knows which rooms are occupied, which aren't, and what was left in each of them."},
+      {l:"Loyalty", v:"To Mira specifically and the Ghallanda guarantee generally. Not to guests who abuse it."},
+    ],
+    gmDetails: [
+      {l:"What she knows", v:"Everything. Which guests have been receiving late-night visitors. Which strongboxes have been accessed at unusual hours. Which room had an argument last Tenday that nobody officially reported. She keeps a private ledger. It is not for guests."},
+      {l:"Hook", v:"Has noticed something in a strongbox access log that she cannot explain and has not told Mira yet. She is deciding whether it is her place to say something or whether she should simply watch."},
+    ],
+    gm: "Kessa is potentially the most practically useful NPC in the Gold Dragon Inn. She will not volunteer information -- it would violate everything she believes about her job. But she can be convinced that sharing specific information serves the guarantee rather than violating it. Getting there requires demonstrating genuine respect for what she protects.",
+  },
+  dunwick: {
+    name: "Dunwick",
+    role: "Night Doorman · Gold Dragon Inn",
+    location: null,
+    tags: [{label:"House Ghallanda", cls:"tag-commerce"}],
+    icon: "🚪",
+    desc: "A large half-orc who stands at the Gold Dragon Inn's door from dusk until dawn and has done so for eleven years. He does not say much. He does not need to. His job is to ensure that people who should enter, enter, and people who shouldn't, don't, and the boundary between those two categories has never once been unclear to him. He has a small folding stool he sits on during quiet hours and a battered copy of a Thrane agricultural almanac he has been reading for three years and is in no hurry to finish.",
+    details: [
+      {l:"Role", v:"Night doorman. Has worked this door for eleven years."},
+      {l:"Manner", v:"Quiet, unhurried, immovable. Not unfriendly. Simply not particularly interested in conversation."},
+      {l:"The almanac", v:"Always has it. Nobody has ever seen him turn a page. Nobody has asked."},
+      {l:"Reputation", v:"In eleven years, nobody has gotten past Dunwick who shouldn't have. This is known."},
+    ],
+    gmDetails: [
+      {l:"What he sees", v:"Everyone who enters and leaves after dark. Has an excellent memory for faces. Has seen several people he recognized from somewhere he cannot quite place -- the memory is nagging at him."},
+    ],
+    gm: "Dunwick is a slow-burn resource. He notices everything and forgets nothing, but he is not going to bring it up. A direct question about a specific person or a specific night will get a direct answer. The faces he cannot quite place are available as a hook -- one of them is connected to the cult activity, and the party asking the right question at the right time could crack something open.",
+  },
+    bresla: {
+    name: "Bresla",
+    role: "Baker · The Old Yard",
+    location: null,
+    tags: [{label:"Commerce", cls:"tag-commerce"}],
+    icon: "🍞",
+    desc: "A broad-shouldered half-orc woman who sets up her portable bread oven before the Celestial Chimes ring their first hour and sells until the last loaf is gone. She does not make small talk. She does not haggle. She does not explain herself. She has been doing this since before most of Marketplace's newer residents were born, and the consistency of her presence is itself a kind of landmark. If Bresla's oven is not lit, something is wrong with the city.",
+    details: [
+      {l:"Manner", v:"Gruff. Economical with words. If she likes you she might grunt in a slightly warmer register. If she doesn't, you'll know by the quality of the silence."},
+      {l:"The bread", v:"Dense, dark, keeps for days. Not glamorous. Exactly what a farmer needs after a long road."},
+      {l:"Position", v:"Same spot, every day, rain or shine, war or peace. Has not missed a market day in living memory."},
+    ],
+    gmDetails: [
+      {l:"What she knows", v:"Everything. She has been standing in the same spot since before the Last War and she pays attention the way only someone who never talks can. Getting information out of her requires patience and genuine respect -- she can tell the difference between someone who wants to use her and someone who actually sees her."},
+      {l:"Hook", v:"If the party earns her trust she will, once, say something like 'south gate, third hour, Tenday.' Nothing else. She will not repeat it."},
+    ],
+    gm: "Bresla is not a quest giver and should never feel like one. She is atmosphere that occasionally becomes plot. The best way to play her is to have her notice the party before they notice her -- she has already assessed them by the time they buy their first loaf.",
+  },
+  markat: {
+    name: "Markat",
+    role: "Knife Sharpener · The Old Yard",
+    location: null,
+    tags: [{label:"Commerce", cls:"tag-commerce"}],
+    icon: "⚔️",
+    desc: "A dwarf who sets up his grinding stone near the Old Yard's central well every morning without fail. He does not advertise. He does not need to. Half the city's working blades have passed through his hands at some point, and the people who know, know. He asks one question, listens to the answer for the full ten minutes it takes to sharpen a blade, and does not speak again until the work is done. Former military -- you can tell by the way he looks at a weapon before he touches it.",
+    details: [
+      {l:"Service", v:"Sharpening, minor repairs, honest assessment of whether a blade is worth keeping. Will tell you to your face if it isn't."},
+      {l:"Manner", v:"Quiet. Methodical. The kind of stillness that comes from having seen a great deal and decided most of it wasn't worth reacting to."},
+      {l:"The Last War", v:"Served. Does not discuss where or for how long. The scars on his left hand suggest the answer is complicated."},
+    ],
+    gmDetails: [
+      {l:"What he notices", v:"What kinds of blades are coming in for sharpening lately. Military-grade edges, not kitchen knives. More of them than there should be for a city supposedly at peace. He has not mentioned this to anyone. Yet."},
+      {l:"Hook", v:"If the party brings him a blade with unusual markings -- cult geometry, Daelkyr script, Siberys-aligned metalwork -- he will recognize it and go very quiet in a specific way that means he has seen it before."},
+    ],
+    gm: "Markat is a slow-burn information source. He will not volunteer anything but he will not lie either. A player who sits with him for a full sharpening and just lets the silence breathe will get more than one who asks direct questions. He knew something was wrong in this city before the party arrived -- he has just been waiting to see who was going to do something about it.",
+  },
+  bill: {
+    name: "Bill",
+    role: "City Watch · The Old Yard",
+    location: null,
+    tags: [{label:"Civic", cls:"tag-civic"}, {label:"Clean", cls:"tag-clean", gmOnly:true}],
+    icon: "🛡️",
+    desc: "Fifteen years on Old Yard duty and Bill has achieved a state of professional equilibrium that lesser guards might mistake for laziness. It is not laziness. It is the deep competence of a man who knows exactly what his job is and has optimized for it completely. His job is to make sure the Old Yard runs smoothly. Not to solve crimes. Not to make arrests. To ensure that the farmers can sell their cabbages and the merchants can argue about prices and the whole ancient machinery of the market keeps turning. He is extraordinarily good at this.",
+    details: [
+      {l:"Manner", v:"Affable, unhurried, deeply unintimidating by design. Knows every merchant by name and at least two of their family members."},
+      {l:"Philosophy", v:"'My job is the Yard. Everything outside the Yard is someone else's problem, and I wish them the very best with it.'"},
+      {l:"Knowledge", v:"Fifteen years of watching the same square means he has noticed every pattern, deviation, and anomaly the Yard has produced. He just doesn't always feel it's his place to do anything about them."},
+    ],
+    gmDetails: [
+      {l:"What he knows", v:"More than he lets on and less than Bresla. Has noticed the same pattern disruptions as the other Yard regulars. Has also noticed Bob's increasingly suspicious lunch acquisitions but has made a professional decision not to investigate."},
+    ],
+    gm: "Bill is the easier of the two to get information from -- he just needs to be convinced it's relevant to the Yard's smooth operation. Frame it as a market concern rather than a city concern and he opens up considerably. He genuinely likes the party if they treat the Yard with respect.",
+  },
+  bob: {
+    name: "Bob",
+    role: "City Watch · The Old Yard",
+    location: null,
+    tags: [{label:"Civic", cls:"tag-civic"}],
+    icon: "🥪",
+    desc: "Bob technically meets every requirement to be a member of the City Watch. This is something of an ongoing administrative mystery. He is nonetheless a fixture of the Old Yard, where he patrols with the dedicated attention of a man primarily focused on where his next meal is coming from, and where the merchants have developed a complicated affection for him based mainly on the time he accidentally solved a theft by eating the evidence and then describing it in sufficient detail to identify the thief.",
+    details: [
+      {l:"Manner", v:"Cheerful, easily distracted, surprisingly difficult to actually get rid of. Has a gift for being somewhere useful at exactly the wrong time for everyone involved."},
+      {l:"The food situation", v:"Bob always has food. Nobody is entirely sure where it comes from. The merchants have a theory but have collectively agreed not to pursue it because the alternative is paperwork."},
+      {l:"Relationship with Bill", v:"They have worked together for eleven years. Bill has long since passed through denial, anger, and bargaining and arrived at a place of genuine fond acceptance."},
+    ],
+    gmDetails: [
+      {l:"What he knows", v:"Accidentally quite a lot. People say things around Bob that they wouldn't say around a more threatening guard, which means he has overheard conversations that would make Bill's hair stand on end. He has not connected them into a coherent picture but the individual pieces are valuable."},
+      {l:"Hook", v:"Bob once saw someone near the south gate at the third hour on a Tenday. He didn't think anything of it at the time. He can describe the person in extraordinary detail, including what they were eating."},
+    ],
+    gm: "Bob is best used as an accidental goldmine. The party should not expect useful information from him and then be surprised when they get it. His hook connects directly to Bresla's if you want to build a thread -- she points, he describes.",
+  },
+  dara: {
+    name: "Dara",
+    role: "Herb Seller · The Old Yard",
+    location: null,
+    tags: [{label:"Commerce", cls:"tag-commerce"}, {label:"Neutral", cls:"tag-neutral"}],
+    icon: "🌿",
+    desc: "An old woman who sells dried herbs from a basket near the Old Yard's central well. Nobody knows her family name or where she came from originally. She has simply always been here, or near enough to always that nobody remembers a time before her. Her remedies are for things no physician has a name for, and they work, which is the part people find unsettling.",
+    details: [
+      {l:"Sells", v:"Dried herbs, tinctures, poultices. Nothing labeled. She knows what you need before you finish describing it."},
+      {l:"Reputation", v:"Half the Old Core swears by her. The other half thinks she is faintly alarming. Both halves still come to her when they need to."},
+      {l:"Quirk", v:"Never haggles. States a price once. If you argue, she wraps up her basket and leaves. She has never once been talked down."},
+    ],
+    gmDetails: [
+      {l:"What she knows", v:"Significantly more than she lets on. Has been in this market long enough to have seen everything at least twice. Her herbs occasionally include things that should not grow in this region."},
+    ],
+    gm: "Dara is deliberately left open as a flexible NPC. She can be a useful information source if the party treats her with respect, a minor magical resource if you need one, or simply good atmosphere. She has noticed the same pattern disruptions as the other Yard merchants but has her own theories about what is causing them -- theories that are, quietly, more accurate than anyone else's.",
+  },
+  corin: {
+    name: "Brother Corin",
+    role: "Priest of Olladra · Clockwork Cathedral",
+    location: 3,
+    tags: [{label:"Religious", cls:"tag-religious"}],
+    icon: "🎲",
+    desc: "A young priest of Olladra with an easy smile and suspiciously good luck. Tends the cathedral's Olladra shrine and has quietly developed a following among Marketplace's gambling community.",
+    details: [
+      {l:"Deity", v:"Olladra, Sovereign of Feast and Good Fortune"},
+      {l:"Reputation", v:"His dice games are legendary. Locals whisper he has Olladra's own favor."},
+    ],
+    gmDetails: [
+      {l:"Secret", v:"Secretly reprogrammed a clockwork acolyte to cheat at dice. The automaton now rolls perfect doubles — Corin's 'miraculous luck' has sparked a cult following among gamblers. He's in over his head."},
+    ],
+    gm: "Harmless but could become a useful contact with Marketplace's gambling and night market crowd. His reprogrammed acolyte is also a loose thread — if anyone notices the acolyte behaving oddly, it leads back to Corin and potentially to questions about what else in the cathedral has been tampered with.",
+  },
   selene: {
     name: "Selene d'Cannith",
     role: "High Priestess of Onatar · Clockwork Cathedral",
@@ -1970,7 +3233,7 @@ const CHARACTERS = {
     name: "Esara Lyr",
     role: "Chief Magewright & Guildmaster",
     location: 1,
-    tags: [{label:"Civic", cls:"tag-civic"}, {label:"Clean", cls:"tag-clean"}],
+    tags: [{label:"Civic", cls:"tag-civic"}, {label:"Clean", cls:"tag-clean", gmOnly:true}],
     icon: "⚡",
     desc: "A no-nonsense elf with a dragonmark-shaped scar on her cheek — not a true mark, though most assume it is. Chief Magewright and Guildmaster, she oversees all of Marketplace's magical infrastructure from streetlamps to sewer wards. Sleeps in her office tower.",
     details: [
@@ -1989,7 +3252,7 @@ const CHARACTERS = {
     name: "Lady Celia Vorn",
     role: "Refugee Coordinator · Government House",
     location: 1,
-    tags: [{label:"Civic", cls:"tag-civic"}, {label:"Clean", cls:"tag-clean"}],
+    tags: [{label:"Civic", cls:"tag-civic"}, {label:"Clean", cls:"tag-clean", gmOnly:true}],
     icon: "🕊️",
     desc: "A soft-spoken half-elf with a perpetual ink stain on her chin. Manages housing for war refugees and brokers uneasy truces between displaced Cyran nobles and local gangs. Believes Aundair's strength is in its mercy.",
     details: [
@@ -2039,7 +3302,7 @@ const CHARACTERS = {
     name: "Marshal Riven Karst",
     role: "Head of City Watch · Government House",
     location: 1,
-    tags: [{label:"Civic", cls:"tag-civic"}, {label:"Clean", cls:"tag-clean"}],
+    tags: [{label:"Civic", cls:"tag-civic"}, {label:"Clean", cls:"tag-clean", gmOnly:true}],
     icon: "🐺",
     desc: "A grizzled shifter with a mangled ear and a permanent snarl. Leads the City Watch with a mix of street-smart brutality and unexpected tenderness toward orphans. Fiercely devoted to the Governor, whom he served alongside in the war.",
     details: [
@@ -2079,9 +3342,13 @@ const CHARACTERS = {
 // ═══════════════════════════════════════════
 
 let state = {
-  screen: 'map',       // 'map' | 'location' | 'charlist' | 'char'
+  screen: 'map',       // 'map' | 'location' | 'district' | 'charlist' | 'char'
   locationId: null,
+  districtId: null,
+  districtLocId: null,
   charId: null,
+  previousScreen: null,
+  previousDistrictId: null,
   gmMode: false,
 };
 
@@ -2090,9 +3357,14 @@ let state = {
 // ═══════════════════════════════════════════
 
 function navigate(screen, opts = {}) {
+  // Track where we came from for contextual back button
+  state.previousScreen = state.screen;
+  state.previousDistrictId = state.districtId;
   state.screen = screen;
   if (opts.locationId !== undefined) state.locationId = opts.locationId;
   if (opts.charId !== undefined) state.charId = opts.charId;
+  if (opts.districtId !== undefined) state.districtId = opts.districtId;
+  if (opts.districtLocId !== undefined) state.districtLocId = opts.districtLocId;
 
   renderSidebar();
   renderContent();
@@ -2118,8 +3390,7 @@ function renderSidebar() {
     const distSec = makeSidebarSection('Districts');
     DISTRICTS.forEach(d => {
       const btn = makeSidebarBtn(d.name, () => {
-        // TODO: navigate to district screen
-        alert('District pages coming soon!');
+        navigate('district', {districtId: d.id});
       });
       distSec.appendChild(btn);
     });
@@ -2134,20 +3405,90 @@ function renderSidebar() {
     });
     sidebar.appendChild(locSec);
 
+  } else if (state.screen === 'district') {
+    const d = DISTRICTS.find(d => d.id === state.districtId);
+    const navSec = makeSidebarSection(d ? d.name : 'District');
+    // List district locations in sidebar
+    if (DISTRICT_LOCATION_DATA[state.districtId]) {
+      DISTRICT_LOCATION_DATA[state.districtId].locations.forEach(loc => {
+        const action = loc.linkedLocation
+          ? () => navigate('location', {locationId: loc.linkedLocation})
+          : () => showDistrictFullEntry(loc);
+        const btn = makeSidebarBtn(loc.name, action);
+        navSec.appendChild(btn);
+      });
+    }
+    sidebar.appendChild(navSec);
+    const backSec = makeSidebarSection('');
+    backSec.appendChild(makeSidebarBtn('← Back to Map', () => navigate('map'), false, true));
+    sidebar.appendChild(backSec);
+
+  } else if (state.screen === 'districtloc') {
+    const districtId = state.districtId;
+    const d = DISTRICTS.find(d => d.id === districtId);
+    const loc = DISTRICT_LOCATION_DATA[districtId] &&
+      DISTRICT_LOCATION_DATA[districtId].locations.find(l => l.id === state.districtLocId);
+    const distSec = makeSidebarSection(d ? d.name : 'District');
+    if (DISTRICT_LOCATION_DATA[districtId]) {
+      DISTRICT_LOCATION_DATA[districtId].locations.forEach(l => {
+        const isActive = l.id === state.districtLocId;
+        const action = l.linkedLocation
+          ? () => navigate('location', {locationId: l.linkedLocation})
+          : () => navigate('districtloc', {districtId, districtLocId: l.id});
+        const btn = makeSidebarBtn(l.name, action, isActive);
+        distSec.appendChild(btn);
+      });
+    }
+    sidebar.appendChild(distSec);
+    // Character quick-nav for current district location
+    const curDistLoc = DISTRICT_LOCATION_DATA[districtId] &&
+      DISTRICT_LOCATION_DATA[districtId].locations.find(l => l.id === state.districtLocId);
+    if (curDistLoc && curDistLoc.characters && curDistLoc.characters.length > 0) {
+      const charSec = makeSidebarSection('Characters');
+      curDistLoc.characters.forEach(cid => {
+        const c = CHARACTERS[cid];
+        if (!c) return;
+        charSec.appendChild(makeSidebarBtn(c.name, () => navigateToDistrictChar(state.districtLocId, cid)));
+      });
+      sidebar.appendChild(charSec);
+    }
+
+    const backSec = makeSidebarSection('');
+    backSec.appendChild(makeSidebarBtn('← Back to District', () => navigate('district', {districtId}), false, true));
+    backSec.appendChild(makeSidebarBtn('← Back to Map', () => navigate('map'), false, true));
+    sidebar.appendChild(backSec);
+
   } else if (state.screen === 'location') {
     const loc = LOCATIONS[state.locationId];
 
-    const navSec = makeSidebarSection(loc.name);
-    navSec.appendChild(makeSidebarBtn('Overview', () => navigate('location', {locationId: state.locationId}), true));
-    if (loc.characters.length > 0) {
-      navSec.appendChild(makeSidebarBtn('Characters', () => navigate('charlist', {locationId: state.locationId})));
+    // Show all city locations in sidebar for context
+    const locSec = makeSidebarSection('Notable Locations');
+    Object.entries(LOCATIONS).forEach(([id, l]) => {
+      if (l.districtOnly) return;
+      const btn = makeSidebarBtn(l.name, () => navigate('location', {locationId: parseInt(id)}), parseInt(id) === state.locationId);
+      locSec.appendChild(btn);
+    });
+    sidebar.appendChild(locSec);
+
+    // Character quick-nav
+    if (loc.characters && loc.characters.length > 0) {
+      const charSec = makeSidebarSection('Characters');
+      loc.characters.forEach(ref => {
+        const {id: cid, gmOnly} = getCharRef(ref);
+        if (gmOnly && !state.gmMode) return;
+        const c = CHARACTERS[cid];
+        if (!c) return;
+        const btn = makeSidebarBtn(c.name, () => navigate('char', {locationId: state.locationId, charId: cid}));
+        if (gmOnly) btn.style.borderLeft = '2px solid #a64a30';
+        charSec.appendChild(btn);
+      });
+      sidebar.appendChild(charSec);
     }
-    if (loc.hooks && loc.hooks.length > 0) {
-      navSec.appendChild(makeSidebarBtn('Quest Hooks', () => {}));
-    }
-    sidebar.appendChild(navSec);
 
     const backSec = makeSidebarSection('');
+    if (state.previousScreen === 'district' || state.previousScreen === 'districtloc') {
+      backSec.appendChild(makeSidebarBtn('← Back to ' + (DISTRICTS.find(d=>d.id===state.previousDistrictId)||{name:'District'}).name, () => navigate('district', {districtId: state.previousDistrictId}), false, true));
+    }
     backSec.appendChild(makeSidebarBtn('← Back to Map', () => navigate('map'), false, true));
     sidebar.appendChild(backSec);
 
@@ -2172,34 +3513,59 @@ function renderSidebar() {
     sidebar.appendChild(charSec);
 
     const backSec = makeSidebarSection('');
+    if (state.previousScreen === 'district' || state.previousScreen === 'districtloc') {
+      backSec.appendChild(makeSidebarBtn('← Back to ' + (DISTRICTS.find(d=>d.id===state.previousDistrictId)||{name:'District'}).name, () => navigate('district', {districtId: state.previousDistrictId}), false, true));
+    }
     backSec.appendChild(makeSidebarBtn('← Back to Map', () => navigate('map'), false, true));
     sidebar.appendChild(backSec);
 
   } else if (state.screen === 'char') {
     const loc = LOCATIONS[state.locationId];
+    const distLocData = state.districtId && state.districtLocId &&
+      DISTRICT_LOCATION_DATA[state.districtId] &&
+      DISTRICT_LOCATION_DATA[state.districtId].locations.find(l => l.id === state.districtLocId);
 
-    const navSec = makeSidebarSection(loc ? loc.name : 'Location');
+    // Section title and overview button
+    const sectionTitle = distLocData ? distLocData.name : (loc ? loc.name : 'Characters');
+    const navSec = makeSidebarSection(sectionTitle);
     if (loc) {
       navSec.appendChild(makeSidebarBtn('Overview', () => navigate('location', {locationId: state.locationId})));
-      navSec.appendChild(makeSidebarBtn('Characters', () => navigate('charlist', {locationId: state.locationId})));
+    } else if (distLocData) {
+      navSec.appendChild(makeSidebarBtn('Overview', () => navigate('districtloc', {districtId: state.districtId, districtLocId: state.districtLocId})));
     }
     sidebar.appendChild(navSec);
 
-    const charSec = makeSidebarSection('Characters');
-    if (loc) {
-      loc.characters.forEach(ref => {
-        const {id: cid, gmOnly} = getCharRef(ref);
+    // Character list
+    const charList = loc ? loc.characters : (distLocData ? distLocData.characters : []);
+    if (charList && charList.length > 0) {
+      const charSec = makeSidebarSection('Characters');
+      charList.forEach(ref => {
+        const cid = typeof ref === 'string' ? ref : ref.id;
+        const gmOnly = typeof ref === 'object' && ref.gmOnly;
         if (gmOnly && !state.gmMode) return;
         const c = CHARACTERS[cid];
         if (!c) return;
-        const btn = makeSidebarBtn(c.name, () => navigate('char', {locationId: state.locationId, charId: cid}), cid === state.charId);
+        const isActive = cid === state.charId;
+        const action = loc
+          ? () => navigate('char', {locationId: state.locationId, charId: cid})
+          : () => navigateToDistrictChar(state.districtLocId, cid);
+        const btn = makeSidebarBtn(c.name, action, isActive);
         if (gmOnly) btn.style.borderLeft = '2px solid #a64a30';
         charSec.appendChild(btn);
       });
+      sidebar.appendChild(charSec);
     }
-    sidebar.appendChild(charSec);
 
+    // Back buttons
     const backSec = makeSidebarSection('');
+    if (distLocData) {
+      const d = DISTRICTS.find(d => d.id === state.districtId);
+      backSec.appendChild(makeSidebarBtn('← Back to ' + sectionTitle, () => navigate('districtloc', {districtId: state.districtId, districtLocId: state.districtLocId}), false, true));
+      if (d) backSec.appendChild(makeSidebarBtn('← Back to ' + d.name, () => navigate('district', {districtId: state.districtId}), false, true));
+    } else if (state.previousScreen === 'district' || state.previousScreen === 'districtloc') {
+      const d = DISTRICTS.find(d => d.id === state.previousDistrictId);
+      if (d) backSec.appendChild(makeSidebarBtn('← Back to ' + d.name, () => navigate('district', {districtId: state.previousDistrictId}), false, true));
+    }
     backSec.appendChild(makeSidebarBtn('← Back to Map', () => navigate('map'), false, true));
     sidebar.appendChild(backSec);
   }
@@ -2246,9 +3612,110 @@ function renderContent() {
   if (state.screen === 'map') {
     visual.className = 'map-mode';
     mapContainer.style.display = 'block';
+    mapContainer.innerHTML = CITY_MAP_HTML;
     placeholder.style.display = 'none';
     const oldPortrait = document.getElementById('char-portrait');
     if (oldPortrait) oldPortrait.style.display = 'none';
+    // Re-attach city map hotspot listeners
+    document.querySelectorAll('.loc-hotspot[data-loc]').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = parseInt(el.dataset.loc);
+        const loc = LOCATIONS[id];
+        if (!loc) return;
+        if (activeMapHotspot) activeMapHotspot.classList.remove('active');
+        el.classList.add('active');
+        activeMapHotspot = el;
+        const blurb = document.getElementById('map-blurb');
+        document.getElementById('map-blurb-name').textContent = loc.name;
+        const tag = document.getElementById('map-blurb-tag');
+        tag.textContent = loc.tag;
+        tag.className = 'info-tag ' + loc.tagClass;
+        document.getElementById('map-blurb-desc').textContent = loc.desc;
+        blurb.classList.add('visible');
+        document.getElementById('map-blurb-goto').onclick = () => navigate('location', {locationId: id});
+        document.getElementById('map-blurb-close').onclick = () => {
+          blurb.classList.remove('visible');
+          el.classList.remove('active');
+          activeMapHotspot = null;
+        };
+      });
+    });
+
+  } else if (state.screen === 'districtloc') {
+    const districtId = state.districtId;
+    const loc = DISTRICT_LOCATION_DATA[districtId] && 
+      DISTRICT_LOCATION_DATA[districtId].locations.find(l => l.id === state.districtLocId);
+    if (!loc) return;
+    visual.className = 'image-mode';
+    mapContainer.style.display = 'none';
+    if (loc.image) {
+      placeholder.style.display = 'none';
+      let img = document.getElementById('char-portrait');
+      if (!img) {
+        img = document.createElement('img');
+        img.id = 'char-portrait';
+        img.crossOrigin = 'anonymous';
+        img.style.cssText = 'max-width:100%;max-height:750px;display:block;object-fit:contain;margin:0 auto;';
+        visual.appendChild(img);
+      }
+      img.src = loc.image;
+      img.style.display = 'block';
+    } else {
+      placeholder.style.display = 'flex';
+      document.getElementById('ph-icon').textContent = '📍';
+      document.getElementById('ph-title').textContent = loc.name;
+      document.getElementById('ph-sub').textContent = loc.tag + ' · ' + (DISTRICTS.find(d=>d.id===districtId)||{name:''}).name;
+    }
+    infoPanel.classList.add('visible');
+    infoPanel.innerHTML = buildDistrictLocHTML(loc);
+
+  } else if (state.screen === 'district') {
+    const districtId = state.districtId;
+    const districtMap = DISTRICT_MAPS[districtId];
+    visual.className = 'map-mode';
+    mapContainer.style.display = 'block';
+    mapContainer.innerHTML = districtMap || '<p style="color:#f3e6c2;padding:20px">District map coming soon</p>';
+    placeholder.style.display = 'none';
+
+    // Wire up district hotspots
+    if (DISTRICT_LOCATION_DATA[districtId]) {
+      DISTRICT_LOCATION_DATA[districtId].locations.forEach(loc => {
+        const hotspot = document.createElementNS('http://www.w3.org/2000/svg','g');
+        hotspot.setAttribute('class','loc-hotspot');
+        hotspot.setAttribute('transform',`translate(${loc.svgX},${loc.svgY})`);
+        hotspot.style.cursor = 'pointer';
+        hotspot.innerHTML = `<circle r="22" fill="transparent" stroke="none"/><circle class="pulse-ring" r="16" fill="rgba(58,36,21,0.0)" stroke="#f3e6c2" stroke-width="1.5" opacity="0.5"/>`;
+        hotspot.addEventListener('click', () => {
+          showDistrictBlurb(loc);
+        });
+        const svgEl = mapContainer.querySelector('svg');
+        if (svgEl) svgEl.appendChild(hotspot);
+      });
+    }
+
+    } else if (state.screen === 'district') {
+    const districtId = state.districtId;
+    const districtMap = DISTRICT_MAPS[districtId];
+    visual.className = 'map-mode';
+    mapContainer.style.display = 'block';
+    mapContainer.innerHTML = districtMap || '<p style="color:#f3e6c2;padding:20px">District map coming soon</p>';
+    placeholder.style.display = 'none';
+    if (DISTRICT_LOCATION_DATA[districtId]) {
+      DISTRICT_LOCATION_DATA[districtId].locations.forEach(loc => {
+        const hotspot = document.createElementNS('http://www.w3.org/2000/svg','g');
+        hotspot.setAttribute('class','loc-hotspot');
+        hotspot.setAttribute('transform',`translate(${loc.svgX},${loc.svgY})`);
+        hotspot.style.cursor = 'pointer';
+        hotspot.innerHTML = `<circle r="22" fill="transparent" stroke="none"/><circle class="pulse-ring" r="16" fill="rgba(58,36,21,0.0)" stroke="#f3e6c2" stroke-width="1.5" opacity="0.5"/>`;
+        hotspot.addEventListener('click', () => {
+          if (loc.linkedLocation) { navigate('location', {locationId: loc.linkedLocation}); }
+          else { showDistrictBlurb(loc); }
+        });
+        const svgEl = mapContainer.querySelector('svg');
+        if (svgEl) svgEl.appendChild(hotspot);
+      });
+    }
 
   } else if (state.screen === 'location') {
     const loc = LOCATIONS[state.locationId];
@@ -2260,7 +3727,7 @@ function renderContent() {
     document.getElementById('ph-sub').textContent = 'Illustration coming soon';
 
     infoPanel.classList.add('visible');
-    infoPanel.innerHTML = buildLocationHTML(loc);
+    infoPanel.innerHTML = buildLocationHTML(loc, state.locationId);
 
   } else if (state.screen === 'charlist') {
     const loc = LOCATIONS[state.locationId];
@@ -2306,7 +3773,29 @@ function renderContent() {
   }
 }
 
-function buildLocationHTML(loc) {
+function buildLocationHTML(loc, locId) {
+  const hasChars = loc.characters && loc.characters.length > 0;
+  const charCards = hasChars ? loc.characters.filter(ref => {
+    const gmOnly = typeof ref === 'object' && ref.gmOnly;
+    return !gmOnly || state.gmMode;
+  }).map(ref => {
+    const cid = typeof ref === 'string' ? ref : ref.id;
+    const gmOnly = typeof ref === 'object' && ref.gmOnly;
+    const c = CHARACTERS[cid];
+    if (!c) return '';
+    return `<div class="char-card${gmOnly ? ' gm-only-card' : ''}" onclick="navigate('char', {locationId: ${locId}, charId: '${cid}'})">
+      <div class="char-avatar">${c.icon}</div>
+      <div>
+        <div class="char-card-name">${c.name}</div>
+        <div class="char-card-role">${c.role}</div>
+        <div class="char-card-tags">
+          ${(c.tags||[]).map(t=>`<span class="info-tag ${t.cls}${t.gmOnly?' gm-only-tag':''}" style="font-size:9px;padding:1px 6px">${t.label}</span>`).join('')}
+          ${(c.gmTags||[]).map(t=>`<span class="info-tag ${t.cls} gm-only-tag" style="font-size:9px;padding:1px 6px">${t.label}</span>`).join('')}
+        </div>
+      </div>
+    </div>`;
+  }).join('') : '';
+
   return `
     <div class="info-section">
       <div class="info-label">Location</div>
@@ -2323,6 +3812,7 @@ function buildLocationHTML(loc) {
       ${loc.gmDetails && loc.gmDetails.length ? `<table class="gm-detail-table">${loc.gmDetails.map(d => `<tr><td>${d.l}</td><td>${d.v}</td></tr>`).join('')}</table>` : ''}
     </div>
     ${loc.gm ? `<hr class="divider"><div class="gm-note"><strong>GM Note</strong>${loc.gm}</div>` : ''}
+    ${hasChars ? `<hr class="divider"><div class="info-section"><div class="info-label">Notable Characters</div><div class="char-list">${charCards}</div></div>` : ''}
   `;
 }
 
@@ -2340,7 +3830,7 @@ function buildCharListHTML(loc) {
             <div>
               <div class="char-card-name">${c.name}</div>
               <div class="char-card-role">${c.role}</div>
-              <div class="char-card-tags">${c.tags.map(t => `<span class="info-tag ${t.cls}" style="font-size:9px;padding:1px 6px">${t.label}</span>`).join('') + (c.gmTags||[]).map(t => `<span class="info-tag ${t.cls} gm-only-tag" style="font-size:9px;padding:1px 6px">${t.label}</span>`).join('')}</div>
+              <div class="char-card-tags">${c.tags.map(t => `<span class="info-tag ${t.cls}${t.gmOnly?' gm-only-tag':''}" style="font-size:9px;padding:1px 6px">${t.label}</span>`).join('') + (c.gmTags||[]).map(t => `<span class="info-tag ${t.cls} gm-only-tag" style="font-size:9px;padding:1px 6px">${t.label}</span>`).join('')}</div>
             </div>
           </div>`;
         }).join('')}
@@ -2355,7 +3845,7 @@ function buildCharHTML(char) {
       <div class="info-label">Character</div>
       <div class="info-title">${char.name}</div>
       <div style="margin:6px 0 10px">
-        ${char.tags.map(t => `<span class="info-tag ${t.cls}">${t.label}</span>`).join('') + (char.gmTags||[]).map(t => `<span class="info-tag ${t.cls} gm-only-tag">${t.label}</span>`).join('')}
+        ${char.tags.map(t => `<span class="info-tag ${t.cls}${t.gmOnly?' gm-only-tag':''}">${t.label}</span>`).join('') + (char.gmTags||[]).map(t => `<span class="info-tag ${t.cls} gm-only-tag">${t.label}</span>`).join('')}
       </div>
       <p class="info-desc">${char.desc}</p>
     </div>
@@ -2384,6 +3874,17 @@ function renderBreadcrumb() {
 
   const crumbs = [{label:'City Map', action:() => navigate('map')}];
 
+  if (state.screen === 'district') {
+    const d = DISTRICTS.find(d => d.id === state.districtId);
+    crumbs.push({label: d ? d.name : 'District', action: null});
+  }
+  if (state.screen === 'districtloc') {
+    const d = DISTRICTS.find(d => d.id === state.districtId);
+    const loc = DISTRICT_LOCATION_DATA[state.districtId] &&
+      DISTRICT_LOCATION_DATA[state.districtId].locations.find(l => l.id === state.districtLocId);
+    crumbs.push({label: d ? d.name : 'District', action: () => navigate('district', {districtId: state.districtId})});
+    crumbs.push({label: loc ? loc.name : 'Location', action: null});
+  }
   if (state.screen === 'location' || state.screen === 'charlist' || state.screen === 'char') {
     const loc = LOCATIONS[state.locationId];
     crumbs.push({label: loc.name, action: () => navigate('location', {locationId: state.locationId})});
@@ -2447,6 +3948,81 @@ document.querySelectorAll('.loc-hotspot').forEach(el => {
 });
 
 // ═══════════════════════════════════════════
+// DISTRICT BLURB
+// ═══════════════════════════════════════════
+
+function navigateToDistrictChar(distLocId, charId) {
+  // Find which district this location belongs to
+  for (const [districtId, data] of Object.entries(DISTRICT_LOCATION_DATA)) {
+    if (data.locations.find(l => l.id === distLocId)) {
+      navigate('char', {districtId, districtLocId: distLocId, locationId: null, charId});
+      return;
+    }
+  }
+}
+
+function showDistrictFullEntry(loc) {
+  navigate('districtloc', {districtId: state.districtId, districtLocId: loc.id});
+}
+
+function showDistrictBlurb(loc) {
+  // If linked, use the main location data for the blurb
+  const blurbData = loc.linkedLocation ? LOCATIONS[loc.linkedLocation] : loc;
+  const blurb = document.getElementById('map-blurb');
+  document.getElementById('map-blurb-name').textContent = blurbData.name || loc.name;
+  const tag = document.getElementById('map-blurb-tag');
+  tag.textContent = blurbData.tag || loc.tag;
+  tag.className = 'info-tag ' + (blurbData.tagClass || loc.tagClass);
+  document.getElementById('map-blurb-desc').textContent = blurbData.desc || loc.desc;
+  blurb.classList.add('visible');
+
+  const gotoBtn = document.getElementById('map-blurb-goto');
+  if (loc.linkedLocation) {
+    gotoBtn.style.display = 'inline-block';
+    gotoBtn.textContent = 'View full entry →';
+    gotoBtn.onclick = () => navigate('location', {locationId: loc.linkedLocation});
+  } else if (loc.details && loc.details.length > 0) {
+    gotoBtn.style.display = 'inline-block';
+    gotoBtn.textContent = 'View full entry →';
+    gotoBtn.onclick = () => {
+      // Show in info panel
+      const infoPanel = document.getElementById('info-panel');
+      infoPanel.classList.add('visible');
+      infoPanel.innerHTML = buildDistrictLocHTML(loc);
+    };
+  } else {
+    gotoBtn.style.display = 'none';
+  }
+
+  document.getElementById('map-blurb-close').onclick = () => {
+    blurb.classList.remove('visible');
+  };
+}
+
+function buildDistrictLocHTML(loc) {
+  const hasChars = loc.characters && loc.characters.length > 0;
+  return `
+    <div class="info-section">
+      <div class="info-label">Location</div>
+      <div class="info-title">${loc.name}</div>
+      <div style="margin:8px 0"><span class="info-tag ${loc.tagClass}">${loc.tag}</span></div>
+      <p class="info-desc">${loc.desc}</p>
+    </div>
+    ${loc.details && loc.details.length ? `<hr class="divider"><div class="info-section"><div class="info-label">Details</div><table class="detail-table">${loc.details.map(d=>`<tr><td>${d.l}</td><td>${d.v}</td></tr>`).join('')}</table>${loc.gmDetails && loc.gmDetails.length ? `<table class="gm-detail-table">${loc.gmDetails.map(d=>`<tr><td>${d.l}</td><td>${d.v}</td></tr>`).join('')}</table>` : ''}</div>` : ''}
+    ${hasChars ? `<hr class="divider"><div class="info-section"><div class="info-label">Notable Characters</div><div class="char-list">${loc.characters.map(cid => {
+      const c = CHARACTERS[cid];
+      if (!c) return '';
+      return `<div class="char-card" onclick="navigateToDistrictChar('${loc.id}', '${cid}')">
+        <div class="char-avatar">${c.icon}</div>
+        <div><div class="char-card-name">${c.name}</div><div class="char-card-role">${c.role}</div>
+        <div class="char-card-tags">${(c.tags||[]).map(t=>`<span class="info-tag ${t.cls}${t.gmOnly?' gm-only-tag':''}" style="font-size:9px;padding:1px 6px">${t.label}</span>`).join('')}${(c.gmTags||[]).map(t=>`<span class="info-tag ${t.cls} gm-only-tag" style="font-size:9px;padding:1px 6px">${t.label}</span>`).join('')}</div>
+        </div></div>`;
+    }).join('')}</div></div>` : ''}
+    ${loc.gm ? `<hr class="divider"><div class="gm-note"><strong>GM Note</strong>${loc.gm}</div>` : ''}
+  `;
+}
+
+// ═══════════════════════════════════════════
 // GM MODE
 // ═══════════════════════════════════════════
 
@@ -2496,6 +4072,9 @@ gmModal.addEventListener('click', e => { if (e.target === gmModal) gmModal.class
 // ═══════════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════════
+
+// Store original city map HTML for restoration
+const CITY_MAP_HTML = document.getElementById('map-container').innerHTML;
 
 navigate('map');
 </script>
