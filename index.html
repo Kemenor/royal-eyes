@@ -1578,6 +1578,7 @@ const DISTRICTS = [
   { id:'alchemical',  name:'Alchemical Quarter' },
   { id:'outer',       name:'Outer Ward' },
   { id:'rail',        name:'Rail Approach' },
+  { id:'wandering-fortune', name:'The Wandering Fortune' },
 ];
 
 const LOCATIONS = {
@@ -2512,6 +2513,40 @@ const DISTRICT_MAPS = {
     <text font-family="Cinzel,Georgia,serif" font-size="18" font-weight="700" letter-spacing="0.2em" fill="#f3e6c2" y="0">OLD CORE</text>
     <text font-family="Palatino,Georgia,serif" font-size="11" font-style="italic" fill="#b89766" y="14">the original city</text>
   </g>
+</svg>`,
+  'wandering-fortune': `<svg viewBox="0 0 1200 760" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="wf-drop" x="-8%" y="-8%" width="120%" height="120%">
+      <feDropShadow dx="4" dy="6" stdDeviation="8" flood-color="#0e0a04" flood-opacity="0.6"/>
+    </filter>
+    <pattern id="wf-grain" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
+      <path d="M0 2 L4 2 M2 0 L2 4" stroke="#a07830" stroke-width="0.3" opacity="0.2"/>
+    </pattern>
+  </defs>
+  <rect x="0" y="0" width="1200" height="760" fill="#120e08"/>
+  <path d="M 80,130 Q 80,90 120,90 L 1080,90 Q 1120,90 1120,130 L 1120,670 Q 1120,710 1080,710 L 120,710 Q 80,710 80,670 Z"
+    fill="#b8986a" stroke="#3a2415" stroke-width="3" filter="url(#wf-drop)"/>
+  <path d="M 80,130 Q 80,90 120,90 L 1080,90 Q 1120,90 1120,130 L 1120,670 Q 1120,710 1080,710 L 120,710 Q 80,710 80,670 Z"
+    fill="url(#wf-grain)" opacity="0.5"/>
+  <line x1="80" y1="210" x2="1120" y2="210" stroke="#5a3a1a" stroke-width="2.5" opacity="0.8"/>
+  <line x1="80" y1="320" x2="1120" y2="320" stroke="#5a3a1a" stroke-width="2.5" opacity="0.8"/>
+  <line x1="80" y1="430" x2="1120" y2="430" stroke="#5a3a1a" stroke-width="2.5" opacity="0.8"/>
+  <line x1="80" y1="590" x2="1120" y2="590" stroke="#5a3a1a" stroke-width="2.5" opacity="0.8"/>
+  <rect x="80" y="90"  width="1040" height="120" fill="#d4b870" opacity="0.12" rx="6"/>
+  <rect x="80" y="210" width="1040" height="110" fill="#a8c890" opacity="0.10"/>
+  <rect x="80" y="320" width="1040" height="110" fill="#c8a060" opacity="0.13"/>
+  <rect x="80" y="430" width="1040" height="160" fill="#d4b060" opacity="0.18"/>
+  <rect x="80" y="590" width="1040" height="120" fill="#806040" opacity="0.18"/>
+  <text x="110" y="158" font-family="Cinzel,Georgia,serif" font-size="13" letter-spacing="0.18em" fill="#f3e6c2" opacity="0.85">THE AERIE</text>
+  <text x="110" y="272" font-family="Cinzel,Georgia,serif" font-size="13" letter-spacing="0.18em" fill="#f3e6c2" opacity="0.85">THE PROMENADE</text>
+  <text x="110" y="382" font-family="Cinzel,Georgia,serif" font-size="13" letter-spacing="0.18em" fill="#f3e6c2" opacity="0.85">THE HIGH ROOM</text>
+  <text x="110" y="518" font-family="Cinzel,Georgia,serif" font-size="13" letter-spacing="0.18em" fill="#f3e6c2" opacity="0.85">THE DRIFT DECK</text>
+  <text x="110" y="648" font-family="Cinzel,Georgia,serif" font-size="13" letter-spacing="0.18em" fill="#f3e6c2" opacity="0.85">THE LOWER HOLDS</text>
+  <g transform="translate(600,48)">
+    <rect x="-240" y="-22" width="480" height="36" rx="3" fill="#3a2415" opacity="0.88"/>
+    <text font-family="Cinzel,Georgia,serif" font-size="17" font-weight="700" letter-spacing="0.22em" fill="#f3e6c2" text-anchor="middle" y="2">THE WANDERING FORTUNE</text>
+    <text font-family="Palatino,Georgia,serif" font-size="10" font-style="italic" fill="#b89766" text-anchor="middle" y="16">deck schematic · approx. 1 day from Marketplace</text>
+  </g>
 </svg>`
 };
 
@@ -2575,7 +2610,98 @@ const DISTRICT_LOCATION_DATA = {
         gmDetails:[],
         gm:"The shop holds the Key to Unseen Doors. Zilvra doesn't know it exists; the shop itself offers it. Kaelis visited and failed a riddle. The Pale Cat has an 'in' with Zilvra but hasn't followed up. Potential loop resource." },
     ]
-  }
+  },
+  'wandering-fortune': {
+    locations: [
+      {
+        id: 'wf-1', name: "The Aerie", svgX: 600, svgY: 150,
+        tag: "Private", tagClass: "tag-mysterious",
+        desc: "You have been invited up. This matters more than it might appear to. The staircase is narrow and spiraling and not particularly dramatic -- Zevran does not announce the approach with architecture because he understands that the approach is not the point. The door at the top is plain dark wood. And then you see why the staircase was allowed to be ordinary. The Aerie is glass on three sides. Not windows -- walls. The superstructure frames the view and then gets out of the way, and what remains is the sky in every direction at once: the lanternlit sweep of the main deck below, the dark countryside rolling past, the moon doing something genuinely spectacular to the eastern horizon.",
+        details: [
+          {l:"Access", v:"Invitation from Zevran only. Kethira escorts. Almost no one reaches here."},
+          {l:"The Room", v:"Glass on three sides. Low table, two decanters, chairs chosen for conversation rather than comfort."},
+        ],
+        gmDetails: [
+          {l:"Opening line", v:"Ah. There you are. I was beginning to wonder if I would have to make the introduction myself. Sit -- the view this hour is really something, and I find good conversations deserve a proper backdrop."},
+          {l:"Function", v:"Where Zevran conducts real business. The wager takes place here. Terms are personalized per person based on what he thinks they value most."},
+          {l:"GM note", v:"The Aerie reveal is the payoff for everything the party did to earn access. Let the room breathe. He was already enjoying this before they arrived."},
+        ],
+        gm: "Three paths to Zevran: Kethira via the forged letter, Syne via impressive table play, or spectacle on the floor that catches his eye from the Promenade. He will not see them otherwise. He is also not hard to intrigue if they do the right things in his house.",
+        characters: ["zevran"],
+        hooks: [],
+      },
+      {
+        id: 'wf-2', name: "The Promenade", svgX: 600, svgY: 265,
+        tag: "Outdoor Deck", tagClass: "tag-mysterious",
+        desc: "Step through the door and the world becomes sky. You are high enough that the countryside below is a suggestion -- patches of dark forest, the silver thread of a river catching moonlight, the faint warm smear of a town too far away to matter. The railing is polished brass, warm under the hand, and beyond it there is nothing between you and the horizon but air and altitude and the spectacular indifference of the night. The lanterns up here are spaced further apart. The gaps were left deliberate. The music from below reaches the Promenade as a rumor of music, almost, and the air smells of altitude and cold stone and, faintly, impossibly, of something blooming.",
+        details: [
+          {l:"Access", v:"Open to all guests. Bar service extends here."},
+          {l:"The Light", v:"Lanterns spaced further apart than on the main floor. The gaps are deliberate -- Zevran designed the lighting himself."},
+          {l:"The feel", v:"This is where you come when you need to remember that the world is large and your problems, however considerable, are geographically small."},
+        ],
+        gmDetails: [
+          {l:"Zevran", v:"Takes his morning tea here. Occasionally walks it in the evening. This is where he watches from when something on the floor catches his attention."},
+          {l:"Spectacle hook", v:"If the party does something he can see -- confronts Tresbin visibly, reacts strongly to the shard in the Lower Holds -- Kethira receives a message from the Aerie shortly after."},
+        ],
+        gm: "A breather location and a spectacle trigger. Let the view land. The altitude doing its work is part of Zevran's design.",
+        characters: [],
+        hooks: [],
+      },
+      {
+        id: 'wf-3', name: "The High Room", svgX: 600, svgY: 375,
+        tag: "Exclusive", tagClass: "tag-arcane",
+        desc: "The noise of the main floor drops away at the threshold like a coat being shrugged off. In here, the carpet is darker, the lanterns fewer, and the silence is the kind that has been purchased at some expense and intends to stay. There are perhaps a dozen tables. Half are occupied. The players do not look up when you enter, which is itself a kind of communication. At the far table, a gnome with a coat full of pockets is playing cards alone and winning, which raises questions nobody present appears to be asking.",
+        details: [
+          {l:"Access", v:"Invitation from Kethira required. Higher stakes. Serious play only."},
+          {l:"The Regular", v:"Doven Ashmark -- gnome, coat full of pockets, reserved table, winning without appearing to notice."},
+        ],
+        gmDetails: [
+          {l:"Doven", v:"Retired planar theorist. Has unsettling research on Siberys shard resonance patterns from Marketplace construction. Will share with anyone who engages him as an intellectual equal."},
+          {l:"The Painting", v:"Far wall, opposite the most expensive table: six figures playing cards, identifiable as the Sovereign Host. Kol Korran -- god of wealth and trade -- is winning. The others look unsurprised and unhappy. No plaque. Nobody on staff knows who commissioned it. (Religion check or close inspection identifies the figures.) Easter egg -- pure Zevran."},
+          {l:"Intel value", v:"Business is conducted at the edges of these games. Fragments surface naturally if the party is paying attention."},
+        ],
+        gm: "Doven is the key resource in this room. He does not have operational intelligence but has the right theoretical framework -- temporal planar mechanics, shard resonance data -- that helps the party ask better questions about what they are inside.",
+        characters: ["doven"],
+        hooks: [],
+      },
+      {
+        id: 'wf-4', name: "The Drift Deck", svgX: 600, svgY: 510,
+        tag: "Main Floor", tagClass: "tag-commerce",
+        desc: "Here is what they do not tell you about the Wandering Fortune's main floor: it is loud, and the loudness is curated. Every sound has been considered. The soft cascade of cards dealt by fingers that are not quite fingers. The particular percussion of coin on felt. The retractable glass ceiling is open tonight, because the weather cooperated and the stars showed up looking their best, as if they too received an invitation. Lanterns hang in long brass chains and the light they throw is warm and slightly amber -- the colour that makes everyone look like they are winning even when they are not.",
+        details: [
+          {l:"The Rule", v:"No business, no violence, no solicitations. Violations reported to Marshal Karst. Every faction agrees. It is the only reason they share the same space."},
+          {l:"The Croupiers", v:"Quasi-elemental sprites. Deal with inhuman precision. No personality. Answer direct questions about the game only. Entirely unbothered by everything."},
+          {l:"The Bar", v:"Full length of the far wall. The Aundairian wine is extraordinary. This is not an accident."},
+        ],
+        gmDetails: [
+          {l:"Syne", v:"House Phiarlan dealer. Flags interesting visitors to Kethira. Has noted Kaelis d'Lyrandar behaved strangely on a recent visit -- played poorly, asked about Zilvra's shop, left frustrated."},
+          {l:"Tresbin", v:"Corner table, full view of the floor, wine she keeps forgetting to drink. Silver Flame / Thrane intelligence. Here to meet a contact. Will recognise the party."},
+          {l:"The neutrality", v:"Enemies are in here together and nobody can act on it. Let this create tension -- the party may spot NPCs they know across a table and be unable to do anything about it."},
+        ],
+        gm: "The Drift Deck is where most of the session happens. Syne and Tresbin are both paths to information -- one warm and professional, one tense and cautious. The ambient neutrality does real work.",
+        characters: ["syne", "tresbin"],
+        hooks: [],
+      },
+      {
+        id: 'wf-5', name: "The Lower Holds", svgX: 600, svgY: 645,
+        tag: "Below Deck", tagClass: "tag-commerce",
+        desc: "The staircase down is not hidden, exactly. It is simply not lit the same way. Nobody has strung lanterns here. The walls are the original hull -- iron-banded, scarred in places by a war that ended years ago and left its evidence anyway, because iron remembers. The corridor narrows. The ceiling drops. The sounds of the main floor reach you here as vibration more than sound, a low thrum that might be the elemental drives or might be the accumulated intention of several hundred people gambling overhead. Probably both.",
+        details: [
+          {l:"Access", v:"Not advertised. Not difficult to find if you ask the right person."},
+          {l:"Brass's Door", v:"Third on the left. Identified by the light under it and the faint smell of something metallic and magical. He is almost certainly aware you are in the corridor. He is entirely unbothered by this."},
+        ],
+        gmDetails: [
+          {l:"The Shard", v:"Fist-sized Siberys shard. Hums faintly in the dark. Siberys constellation in the face if caught in the right light. Brass is asking 40 gold. Cannith courier trail leads directly to the Above cult supply chain."},
+          {l:"Arcane reaction", v:"Any arcane or divine sensitivity reacts to the shard. Riaan especially should get a strong response -- similar to the constellation-in-shard moment from Chapter 2 but stronger and more deliberate."},
+          {l:"Forged letter", v:"Brass let a Cannith artificer use his space as a drop point. Will give up the name if convinced Kethira already knows and he is being offered a way out."},
+          {l:"GM note", v:"Zevran officially does not know what happens here. He takes a cut. He considers it a feature."},
+        ],
+        gm: "The shard is the critical beat of the Lower Holds. Make sure it registers with the right party members. The forged letter connection is the secondary beat and a path to Kethira's recommendation.",
+        characters: ["brass"],
+        hooks: [],
+      },
+    ]
+  },
 };
 
 // Locations that only appear in district maps, not the city overview
@@ -3335,6 +3461,123 @@ const CHARACTERS = {
     ],
     gm: "Hook: asks party to retrieve 'stolen' schematics — actually his own fakes to send them off track. His obsession with sacred angles is how cult geometry got into the tower's foundations without anyone questioning it.",
   },
+  zevran: {
+    portrait: "",
+    name: "Zevran the Sky-Gambler",
+    role: "Owner · The Aerie · The Wandering Fortune",
+    tags: [{label:"House Phiarlan", cls:"tag-infrastructure"}],
+    gmTags: [{label:"Info Broker", cls:"tag-neutral"}, {label:"Non-Looper", cls:"tag-clean"}],
+    icon: "🂴",
+    desc: "An elf of advancing years and absolutely no intention of acknowledging them. Already there when you notice him -- not arrived, simply present, as if the room arranged itself around him some time ago and waited for everyone else to catch up. Dressed in clothes that cost enough to be subtle and are subtle in a way that invites you to notice. The sapphire in his lapel catches light from directions that don't quite make sense. His eyes are amber -- the particular shade that belongs to people who are always, privately, calculating the odds.",
+    details: [
+      {l:"Opening line", v:"I do love when the evening provides a surprise."},
+    ],
+    gmDetails: [
+      {l:"The Dice", v:"Behind the bar: ornate lucky dice acquired from gnome architect Tarnis 8 months ago, in lieu of a debt. Hum faintly. Siberys constellation etched into the pips. Zevran does not know they are Siberys-aligned."},
+      {l:"Stance", v:"Not a cultist. Genuinely neutral. Information is the commodity. He protects that business by never being visibly on anyone's side."},
+      {l:"House Phiarlan", v:"Mark of Shadow -- minor manifestation, left forearm. Does not advertise it."},
+      {l:"What he knows", v:"Kaelis visited recently, played poorly, asked about Zilvra's shop location, left frustrated. Has partial cult picture from Phiarlan contacts. Knows the ceremony is significant."},
+      {l:"The Wager", v:"Does not sell information -- finds it gauche. Gambles it. Terms are personalized per person based on what he thinks they value most. Will not engage until he decides they are interesting."},
+    ],
+    gm: "Already knows more than he lets on. Let him be one step ahead without being omniscient. If the party surprises him, show it -- a genuine pause, a recalibration. He is not used to being surprised.",
+  },
+  kethira: {
+    portrait: "",
+    name: "Kethira",
+    role: "Head of Security · The Wandering Fortune",
+    tags: [{label:"Wandering Fortune Security", cls:"tag-infrastructure"}],
+    gmTags: [{label:"Gatekeeper", cls:"tag-neutral"}, {label:"Non-Looper", cls:"tag-clean"}],
+    icon: "🛡",
+    desc: "A warforged built lighter than the standard combat frame -- designed for surveillance, not fighting. Her chassis is covered in etched geometric patterns she designed herself. They seem to shift slightly when you are not looking directly at them. Her optical lenses are gold just now. Gold is apparently fine. She does not introduce herself. Her presence introduces her.",
+    details: [
+      {l:"Opening line", v:"You have been here forty minutes. Can I help you with something, or are you still deciding?"},
+      {l:"Lens system", v:"Gold = relaxed. Amber = focused and assessing. Dim red = she has concluded you are a problem."},
+      {l:"Current problem", v:"Forged Kundarak letter of credit. 300+ gold in uncoverable credit over several visits. Traced to the Lower Holds. Needs discreet resolution."},
+    ],
+    gmDetails: [
+      {l:"What she gives", v:"A direct recommendation to Zevran once earned. She will say it plainly: I will let him know you are worth his time."},
+      {l:"Not bribeable", v:"Responds to competence, directness, and demonstrated usefulness. Performances get amber lenses immediately."},
+    ],
+    gm: "She has formed an accurate first impression of each party member before they reach the bar. If they engage her honestly, she responds in kind. The forged letter resolution is the cleanest path to Zevran.",
+  },
+  doven: {
+    portrait: "",
+    name: "Doven Ashmark",
+    role: "Retired Planar Theorist · The High Room",
+    tags: [{label:"Morgrave University", cls:"tag-civic"}],
+    gmTags: [{label:"Key Witness", cls:"tag-neutral"}, {label:"Non-Looper", cls:"tag-clean"}],
+    icon: "📚",
+    desc: "A gnome of advancing years with the distracted quality of someone whose mind is conducting a completely separate and more interesting meeting somewhere behind his eyes. His coat has more pockets than should be structurally advisable and at least three of them are open. He is at the far High Room table, winning at cards without appearing to notice, with a sheet of calculations beside him that is clearly bothering him. He adds to it. Crosses something out. Wins another hand.",
+    details: [
+      {l:"Opening line", v:"Pull up a chair. I have been wanting someone to tell me I am wrong about something."},
+      {l:"Why here", v:"Came to the Wandering Fortune specifically to think. Has a reserved table in the High Room. Been a regular for years."},
+      {l:"The research", v:"Siberys shard planar resonance patterns from Marketplace construction contracts. The math is wrong -- not slightly off, wrong in a specific and deliberate direction."},
+    ],
+    gmDetails: [
+      {l:"What he provides", v:"The shard planar data and what the resonance patterns indicate about the ritual type. If the party describes the time loop, he can identify the ritual class and what it implies about the power source fueling it."},
+      {l:"Trust threshold", v:"Will share sensitive research with anyone who demonstrates they are not going to do something stupid with it. He has been burned before. Intellectual engagement works."},
+    ],
+    gm: "Let him get genuinely excited when party questions touch his research -- he has been sitting on this unsettling data for weeks. He has theory and framework, not operational intelligence. That is what makes him valuable.",
+  },
+  syne: {
+    portrait: "",
+    name: "Syne",
+    role: "Dealer · House Phiarlan · The Drift Deck",
+    tags: [{label:"House Phiarlan", cls:"tag-infrastructure"}],
+    gmTags: [{label:"Intelligence", cls:"tag-neutral"}, {label:"Non-Looper", cls:"tag-clean"}],
+    icon: "🃏",
+    desc: "The table she runs is the best table on the floor and everyone knows it without being able to say exactly why. The cards move through her hands like water finding its level -- natural, unhurried, the same every time and somehow never mechanical. She meets your eyes when you sit down and her smile is warm in the specific way of someone who is genuinely glad you are here and is also, at the same time, reading you like a ledger.",
+    details: [
+      {l:"Opening line", v:"House or straight odds?"},
+      {l:"House", v:"House Phiarlan. Mark of Shadow, small, below the collar. Has been dealing on the Wandering Fortune two years."},
+    ],
+    gmDetails: [
+      {l:"The Kaelis observation", v:"Kaelis d'Lyrandar visited recently, played poorly, asked about Zilvra Tinkwhistle's shop location. Left frustrated. She flagged it to her Phiarlan contact."},
+      {l:"Function", v:"Reports what she hears upstream. The performance and the cover are both real -- she is genuinely excellent at the table."},
+      {l:"Path to Zevran", v:"If the party impresses her -- plays interestingly, asks questions that reveal real knowledge -- she passes a word to Kethira. She will not tell the party she has done this."},
+    ],
+    gm: "She should feel like the first NPC who makes the party feel slightly outclassed in the information game. She knows things and is deciding whether they are worth talking to.",
+  },
+  brass: {
+    portrait: "",
+    name: "Brass",
+    role: "Trader · The Lower Holds",
+    tags: [{label:"Independent", cls:"tag-commerce"}],
+    gmTags: [{label:"Has the Shard", cls:"tag-cult"}, {label:"Non-Looper", cls:"tag-clean"}],
+    icon: "⚖",
+    desc: "A half-orc wide in the way of someone who has occasionally needed to be, with a stillness that belongs to people who learned early that moving first is usually the wrong decision. Two of his teeth are brass -- replacements, each catching the low light with a precision the originals presumably lacked. He sits in a converted storage room surrounded by objects of wildly varying provenance and apparently total contentment.",
+    details: [
+      {l:"Opening line", v:"Looking or buying."},
+      {l:"Stock", v:"Unusual items, no questions asked, provenance flexible."},
+    ],
+    gmDetails: [
+      {l:"The Shard", v:"A Siberys shard, fist-sized. Hums faintly in the dark. Siberys constellation in the face if caught in the right light. Bought off a nervous Cannith courier claiming it was a defective lot. Asking 40 gold."},
+      {l:"The shard trail", v:"The Cannith courier trail leads directly to the Above cult supply chain if pursued."},
+      {l:"Arcane reaction", v:"Any arcane or divine sensitivity reacts to the shard. Riaan especially should get a strong response -- similar to the constellation-in-shard moment from Chapter 2 but stronger."},
+      {l:"The forged letter", v:"Brass let a Cannith artificer use his space as a drop point. Will give up the name if convinced Kethira already knows and he is being offered a way out."},
+    ],
+    gm: "Pragmatic to the point of cheerfulness. Not hostile, not warm. He is conducting commerce and so are you. The shard is the critical beat -- make sure it registers with the right party members.",
+  },
+  tresbin: {
+    portrait: "",
+    name: "Tresbin Passionflame",
+    role: "Silver Flame Captain · Thrane",
+    tags: [{label:"Silver Flame", cls:"tag-religious"}, {label:"Thrane", cls:"tag-infrastructure"}],
+    gmTags: [{label:"Thrane Intel", cls:"tag-neutral"}, {label:"Non-Looper", cls:"tag-clean"}],
+    icon: "⚔",
+    desc: "A wine glass she has been not-drinking for some time now. A corner table with a perfect view of the entire floor -- obviously deliberate. Obviously not here to gamble. The recognition when she sees the party is instant and the calculation behind her eyes is faster -- who they are, what this means, how she wanted tonight to go. The wine glass comes up, finally, and she takes a sip in the manner of someone who has decided that if she cannot have the evening she planned, she will at least conduct herself impeccably through the one she has.",
+    details: [
+      {l:"Opening line", v:"I would say this is a coincidence, but I suspect you would find that insulting."},
+      {l:"Party history", v:"Met on the lightning rail to Marketplace in Chapter 1. She suspected them then."},
+      {l:"Stated purpose", v:"Personal business. Will not confirm or deny specifics."},
+    ],
+    gmDetails: [
+      {l:"True purpose", v:"Thrane intelligence tracking Siberys cult activity in the Aundair/Thrane border region. Here to meet a contact feeding Thrane information about the Above cult's Marketplace operation."},
+      {l:"What she knows", v:"Thrane has been tracking Above cult activity for months. The Marketplace ceremony is the operation they have been building toward. Her contact identified someone inside -- she will not name them yet, but will confirm two cults if the party already knows and tests her."},
+      {l:"Trust barrier", v:"Will not burn her contact or confirm Thrane is running intel on Aundairian soil. She and the party want the same outcome. She has no reason to trust them and several reasons not to."},
+    ],
+    gm: "Not hostile, but clearly here for reasons she will not explain, and the party knows her from a context where she was already suspicious. An ally the party can almost reach but not quite yet. More available in subsequent loops as trust builds.",
+  },
 };
 
 // ═══════════════════════════════════════════
@@ -3386,15 +3629,23 @@ function renderSidebar() {
   sidebar.innerHTML = '';
 
   if (state.screen === 'map') {
-    // Districts
-    const distSec = makeSidebarSection('Districts');
-    DISTRICTS.forEach(d => {
+    // City Districts
+    const distSec = makeSidebarSection('City Districts');
+    DISTRICTS.filter(d => d.id !== 'wandering-fortune').forEach(d => {
       const btn = makeSidebarBtn(d.name, () => {
         navigate('district', {districtId: d.id});
       });
       distSec.appendChild(btn);
     });
     sidebar.appendChild(distSec);
+
+    // Beyond Marketplace
+    const extSec = makeSidebarSection('Beyond Marketplace');
+    DISTRICTS.filter(d => d.id === 'wandering-fortune').forEach(d => {
+      const btn = makeSidebarBtn(d.name, () => navigate('district', {districtId: d.id}));
+      extSec.appendChild(btn);
+    });
+    sidebar.appendChild(extSec);
 
     // Named Locations
     const locSec = makeSidebarSection('Notable Locations');
